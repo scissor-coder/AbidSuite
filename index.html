@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>AbidSuite | বাংলা ভাষার প্রসার ও প্রোডাক্টিভিটি</title>
+    <meta name="description" content="বাংলা ভাষার প্রসার এবং ডিজিটাল মাধ্যমে বাংলাকে সমৃদ্ধ করার উদ্দেশ্যে তৈরি মাইক্রোসফট ওয়ার্ডের পাওয়ারফুল অ্যাড-ইন।">
+    
+    <!-- Fonts: Plus Jakarta Sans for UI, Tiro Bangla for Bengali typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #059669;       /* Deep Emerald */
+            --primary-light: #10b981;
+            --primary-glow: rgba(16, 185, 129, 0.15);
+            --secondary: #0f172a;     /* Midnight Blue */
+            --accent: #38bdf8;        /* Sky Blue */
+            --bg-color: #f8fafc;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-light: rgba(226, 232, 240, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Tiro Bangla', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(160,100%,74%,0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, hsla(200,100%,74%,0.15) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        h1, h2, h3, .bangla-font {
+            font-family: 'Tiro Bangla', serif;
+        }
+
+        /* ----- Navigation ----- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        .btn-nav {
+            background: var(--secondary);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        
+        .btn-nav:hover {
+            background: var(--primary);
+            box-shadow: 0 10px 20px -5px var(--primary-glow);
+        }
+
+        /* ----- Hero Section ----- */
+        .hero {
+            padding: 140px 5% 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .purpose-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            color: #047857;
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            border: 1px solid #a7f3d0;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.15;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 90%;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.3s;
+            box-shadow: 0 15px 30px -10px rgba(5, 150, 105, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px -10px rgba(5, 150, 105, 0.5);
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .hero-img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        /* ----- Top Highlighted Features ----- */
+        .top-features {
+            max-width: 1300px;
+            margin: 40px auto 80px;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .highlight-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-light);
+            padding: 24px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .highlight-card:hover {
+            border-color: var(--primary-light);
+            transform: translateY(-5px);
+        }
+
+        .hc-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-glow);
+            color: var(--primary);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .hc-text h4 {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 4px;
+        }
+        
+        .hc-text p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* ----- Soul Purpose Banner ----- */
+        .purpose-banner {
+            background: var(--secondary);
+            margin: 0 auto 100px;
+            padding: 60px 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .purpose-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -10%;
+            width: 300px; height: 300px;
+            background: var(--primary);
+            filter: blur(150px);
+            opacity: 0.4;
+        }
+
+        .purpose-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .purpose-content i {
+            color: var(--primary-light);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .purpose-content h2 {
+            color: white;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        /* ----- Detailed Modern Feature Cards ----- */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+        }
+
+        .features-grid {
+            max-width: 1300px;
+            margin: 0 auto 100px;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 40px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .f-icon-wrap {
+            width: 60px;
+            height: 60px;
+            background: #f1f5f9;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 24px;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover .f-icon-wrap {
+            background: var(--primary);
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .f-list {
+            list-style: none;
+        }
+
+        .f-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .f-list li i {
+            color: var(--primary-light);
+            font-size: 1.1rem;
+            margin-top: 4px;
+            background: #ecfdf5;
+            border-radius: 50%;
+        }
+
+        /* ----- Footer ----- */
+        footer {
+            background: var(--bg-color);
+            border-top: 1px solid var(--border-light);
+            padding: 50px 5%;
+            text-align: center;
+        }
+
+        footer h3 {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .copyright {
+            margin-top: 30px;
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 500;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .hero { grid-template-columns: 1fr; text-align: center; padding-top: 120px; }
+            .hero p { margin: 0 auto 40px; }
+            .hero-buttons { justify-content: center; }
+            .top-features { grid-template-columns: 1fr; max-width: 600px; }
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .purpose-content h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Modern Glass Navbar -->
+    <nav>
+        <a href="#" class="logo">
+            <i class="fas fa-layer-group"></i> AbidSuite
+        </a>
+        <a href="https://drive.google.com/uc?export=download&id=1ufrjQ1Ji3qEUDSbXX0W7xZguEFYedDpR" class="btn-nav">Download</a>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="purpose-badge">
+                    <i class="fas fa-heart"></i> বাংলা ভাষার প্রসারে নিবেদিত
+                </div>
+                <h1>ওয়ার্ড ডকুমেন্টে <br>কাজের গতি হবে <span style="color: var(--primary);">দ্বিগুণ</span></h1>
+                <p class="bangla-font">AbidSuite হলো Microsoft Word-এর জন্য একটি পাওয়ারফুল অ্যাড-ইন যা আপনার দৈনন্দিন ডকুমেন্টেশনের কাজকে করবে আরও সহজ, নির্ভুল এবং সময়সাশ্রয়ী।</p>
+                <div class="hero-buttons">
+                    <a href="https://drive.google.com/uc?export=download&id=1ufrjQ1Ji3qEUDSbXX0W7xZguEFYedDpR" class="btn-primary">
+                        <i class="fas fa-cloud-download-alt"></i> ডাইনলোড AbidSuite
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-image-wrapper">
+                <!-- Updated Image Source -->
+                <img src="https://lh3.googleusercontent.com/d/1vs69zJXTkf_vNdx_U3ET9s3uIln0fgIl" alt="AbidSuite Dashboard UI" class="hero-img">
+            </div>
+        </section>
+
+        <!-- Top Highlighted Features (Quick Glance) -->
+        <section class="top-features">
+            <div class="highlight-card bangla-font">
+                <div class="hc-icon"><i class="fas fa-language"></i></div>
+                <div class="hc-text">
+                    <h4>বিজয় টু ইউনিকোড</h4>
+                    <p>এক ক্লিকেই ফন্ট কনভার্সন</p>
+                </div>
+            </div>
+            <div class="highlight-card bangla-font">
+                <div class="hc-icon"><i class="fas fa-table-cells"></i></div>
+                <div class="hc-text">
+                    <h4>অ্যাডভান্সড টেবিল</h4>
+                    <p>যোগফল ও লেআউট টুলস</p>
+                </div>
+            </div>
+            <div class="highlight-card bangla-font">
+                <div class="hc-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+                <div class="hc-text">
+                    <h4>স্মার্ট ক্লিনার</h4>
+                    <p>অপ্রয়োজনীয় অবজেক্ট মুছুন</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Soul Purpose Highlight Banner -->
+        <section class="purpose-banner">
+            <div class="purpose-content">
+                <i class="fas fa-quote-left"></i>
+                <h2 class="bangla-font">"আমাদের মাতৃভাষা বাংলাকে ডিজিটাল মাধ্যমে আরও প্রসারিত ও সমৃদ্ধ করার এবং আমাদের কাজের গতি বৃদ্ধির লক্ষ্যে <strong>AbidSuite</strong> তৈরি করা হয়েছে।"</h2>
+            </div>
+        </section>
+
+        <!-- Detailed Modern Feature Cards -->
+        <div class="section-header">
+            <h2>ফিচারস যা আপনাকে মুগ্ধ করবে</h2>
+        </div>
+
+        <section class="features-grid">
+            <!-- Feature 1 -->
+            <div class="feature-card">
+                <div class="f-icon-wrap"><i class="fas fa-language"></i></div>
+                <h3>ভাষা ও লোকালাইজেশন</h3>
+                <ul class="f-list bangla-font">
+                    <li><i class="fa-solid fa-circle-check"></i> বিজয় থেকে ইউনিকোডে নিখুঁত রূপান্তর।</li>
+                    <li><i class="fa-solid fa-circle-check"></i> বাংলা ও ইংরেজি সংখ্যার পারস্পরিক কনভার্সন।</li>
+                    <li><i class="fa-solid fa-circle-check"></i> ফুল স্টপ (.) ও দাঁড়ি (।) স্বয়ংক্রিয় অদলবদল।</li>
+                    <li><i class="fa-solid fa-circle-check"></i> ডাইনামিক বাংলা ও ইংরেজি তারিখ ইনসার্ট।</li>
+                </ul>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="feature-card">
+                <div class="f-icon-wrap"><i class="fas fa-table-columns"></i></div>
+                <h3>টেবিল ও গাণিতিক কন্ট্রোল</h3>
+                <ul class="f-list bangla-font">
+                    <li><i class="fa-solid fa-circle-check"></i> টেবিলের রো এবং কলামের দ্রুত যোগফল।</li>
+                    <li><i class="fa-solid fa-circle-check"></i> টেবিল ট্রান্সপোজ (Row থেকে Column)।</li>
+                    <li><i class="fa-solid fa-circle-check"></i> ডকুমেন্টের সকল টেবিল একসাথে সিলেক্ট।</li>
+                    <li><i class="fa-solid fa-circle-check"></i> ভগ্নাংশ (Fraction) ও সুপারস্ক্রিপ্ট টুলস।</li>
+                </ul>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="feature-card">
+                <div class="f-icon-wrap"><i class="fas fa-eraser"></i></div>
+                <h3>স্মার্ট ডিলিটার ও ক্লিনার</h3>
+                <ul class="f-list bangla-font">
+                    <li><i class="fa-solid fa-circle-check"></i> 'Super Clean' দিয়ে এক্সট্রা স্পেস অপসারণ।</li>
+                    <li><i class="fa-solid fa-circle-check"></i> সকল ইমেজ, টেক্সট বক্স, শেপ একসাথে ডিলিট।</li>
+                    <li><i class="fa-solid fa-circle-check"></i> ব্ল্যাঙ্ক, জোড় বা বিজোড় পেজ ক্লিয়ার করা।</li>
+                    <li><i class="fa-solid fa-circle-check"></i> নির্দিষ্ট পেজ রেঞ্জ অনুযায়ী দ্রুত রিমুভ।</li>
+                </ul>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="feature-card">
+                <div class="f-icon-wrap"><i class="fas fa-rocket"></i></div>
+                <h3>অ্যাডভান্সড ইউটিলিটি</h3>
+                <ul class="f-list bangla-font">
+                    <li><i class="fa-solid fa-circle-check"></i> যেকোনো টেক্সট থেকে ইনস্ট্যান্ট QR Code।</li>
+                    <li><i class="fa-solid fa-circle-check"></i> সম্পূর্ণ ডকুমেন্টকে ইমেজে রূপান্তর।</li>
+                    <li><i class="fa-solid fa-circle-check"></i> সিকোয়েন্সিয়াল রিপ্লেস (Sequential Replace)।</li>
+                    <li><i class="fa-solid fa-circle-check"></i> কাস্টম মাল্টি-পেস্ট ক্লিপবোর্ড সুবিধা।</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Minimal Modern Footer -->
+    <footer>
+        <h3 class="bangla-font">AbidSuite</h3>
+        <p style="color: var(--primary); font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif;">Built for the love of the Bengali Language.</p>
+        <p class="copyright">Copyright &copy; ২০২৬ আবিদ আল জামী (Abid Al Jamee)। সর্বস্বত্ব সংরক্ষিত।</p>
+    </footer>
+
+</body>
+  </html>
