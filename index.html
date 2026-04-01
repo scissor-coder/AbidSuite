@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="bn" dir="ltr">
 <head>
     <meta name="google-site-verification" content="Ad8piEEnU1XMgAGn693rNXK39r2dtUoxNbS4OmVQJ20" />
+    <meta name="keywords" content="AbidSuite, Microsoft Word Macros, VBA Productivity, Sequential Replace, Multi Paste, Bangla Date Pro, Bijoy to Unicode, Bengali Digit Converter, Word Table Tools, Document Super Cleaner, QR Code Word Generator, Word Image Extraction, Arabic to Roman Converter, Page Break Remover, Math Fraction Converter, Word Doc to Image, Bengali Number Spelling">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -11,20 +12,21 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inder&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+    <!-- Imported Fonts including Atma and Hind Siliguri -->
+    <link href="https://fonts.googleapis.com/css2?family=Atma:wght@400;600;700&family=Fira+Sans:wght@400;600;700&family=Hind+Siliguri:wght@400;600;700&family=Inder&family=Lateef:wght@400;500;600;700&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     <style>
-        :root {
-            /* Base Variables (Light Theme) */
+        /* Base Variables (Fallback/Light Mode) */
+        :root, body[data-theme="light"] {
             --base-font-size: 0.9rem; 
             --primary: #059669;
             --primary-light: #10b981;
             --primary-glow: rgba(16, 185, 129, 0.15);
+            --primary-glow-strong: rgba(16, 185, 129, 0.4);
             --secondary: #0f172a;
             --accent: #38bdf8;
             
-            /* Theme Dynamic Variables */
             --bg-color: #f8fafc;
             --text-main: #1e293b;
             --text-muted: #64748b;
@@ -37,190 +39,269 @@
             --purpose-text: #ffffff;
             --footer-bg: #f1f5f9;
             --gradient-overlay: hsla(160,100%,74%,0.1);
+            
+            --btn-nav-bg: #0f172a;
+            --popup-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            --img-shadow: 0 2rem 4rem -1rem rgba(0,0,0,0.1);
+            --img-shadow-hover: 0 2.5rem 5rem -1rem rgba(0,0,0,0.25);
+            --img-opacity: 1;
+            --card-hover-shadow: 0 25px 50px -20px rgba(0,0,0,0.15);
+            --step-hover-shadow: 0 15px 30px -10px rgba(0,0,0,0.1);
         }
 
-        body.dark-mode {
-            /* Dark Theme Variables */
-            --bg-color: #0b1120;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-light: rgba(51, 65, 85, 0.8);
-            --bg-card: #1e293b;
-            --nav-bg: rgba(11, 17, 32, 0.85);
-            --hover-bg: #334155;
-            --icon-bg: #334155;
-            --purpose-bg: #020617;
-            --purpose-text: #f8fafc;
-            --footer-bg: #020617;
-            --secondary: #f8fafc;
+        /* Dark Theme (Default) */
+        body[data-theme="dark"] {
+            --bg-color: #0b1120; --text-main: #f8fafc; --text-muted: #94a3b8;
+            --border-light: rgba(51, 65, 85, 0.8); --bg-card: #1e293b;
+            --nav-bg: rgba(11, 17, 32, 0.85); --hover-bg: #334155; --icon-bg: #334155;
+            --purpose-bg: #020617; --purpose-text: #f8fafc; --footer-bg: #020617;
+            --secondary: #f8fafc; --primary: #059669; --primary-light: #10b981;
             --gradient-overlay: hsla(160,100%,74%,0.03);
             --primary-glow: rgba(16, 185, 129, 0.25);
+            --primary-glow-strong: rgba(16, 185, 129, 0.5);
+            
+            --btn-nav-bg: var(--primary); --popup-shadow: 0 8px 30px rgba(0,0,0,0.5);
+            --img-shadow: 0 2rem 4rem -1rem rgba(0,0,0,0.5); --img-shadow-hover: 0 0 50px rgba(16, 185, 129, 0.4);
+            --img-opacity: 0.9; --card-hover-shadow: 0 25px 50px -20px rgba(0,0,0,0.5); --step-hover-shadow: 0 15px 30px -10px rgba(0,0,0,0.4);
+        }
+
+        /* Ocean Theme */
+        body[data-theme="ocean"] {
+            --bg-color: #0f172a; --text-main: #f8fafc; --text-muted: #cbd5e1;
+            --border-light: rgba(30, 58, 138, 0.5); --bg-card: #1e293b;
+            --nav-bg: rgba(15, 23, 42, 0.85); --hover-bg: #1e3a8a; --icon-bg: #1e3a8a;
+            --purpose-bg: #020617; --purpose-text: #f8fafc; --footer-bg: #0f172a;
+            --secondary: #60a5fa; --primary: #3b82f6; --primary-light: #60a5fa;
+            --gradient-overlay: hsla(210,100%,74%,0.05); --primary-glow: rgba(59, 130, 246, 0.25); --primary-glow-strong: rgba(59, 130, 246, 0.5);
+            
+            --btn-nav-bg: var(--primary); --popup-shadow: 0 8px 30px rgba(0,0,0,0.5);
+            --img-shadow: 0 2rem 4rem -1rem rgba(0,0,0,0.5); --img-shadow-hover: 0 0 50px rgba(59, 130, 246, 0.4);
+            --img-opacity: 0.9; --card-hover-shadow: 0 25px 50px -20px rgba(0,0,0,0.5); --step-hover-shadow: 0 15px 30px -10px rgba(0,0,0,0.4);
+        }
+
+        /* Forest Theme */
+        body[data-theme="forest"] {
+            --bg-color: #064e3b; --text-main: #ecfdf5; --text-muted: #a7f3d0;
+            --border-light: rgba(6, 95, 70, 0.8); --bg-card: #065f46;
+            --nav-bg: rgba(6, 78, 59, 0.85); --hover-bg: #047857; --icon-bg: #047857;
+            --purpose-bg: #022c22; --purpose-text: #ecfdf5; --footer-bg: #022c22;
+            --secondary: #34d399; --primary: #10b981; --primary-light: #34d399;
+            --gradient-overlay: hsla(150,100%,74%,0.05); --primary-glow: rgba(16, 185, 129, 0.3); --primary-glow-strong: rgba(16, 185, 129, 0.6);
+            
+            --btn-nav-bg: var(--primary); --popup-shadow: 0 8px 30px rgba(0,0,0,0.5);
+            --img-shadow: 0 2rem 4rem -1rem rgba(0,0,0,0.5); --img-shadow-hover: 0 0 50px rgba(16, 185, 129, 0.4);
+            --img-opacity: 0.9; --card-hover-shadow: 0 25px 50px -20px rgba(0,0,0,0.5); --step-hover-shadow: 0 15px 30px -10px rgba(0,0,0,0.4);
+        }
+
+        /* Sunset Theme */
+        body[data-theme="sunset"] {
+            --bg-color: #450a0a; --text-main: #fef2f2; --text-muted: #fca5a5;
+            --border-light: rgba(153, 27, 27, 0.5); --bg-card: #7f1d1d;
+            --nav-bg: rgba(69, 10, 10, 0.85); --hover-bg: #991b1b; --icon-bg: #991b1b;
+            --purpose-bg: #2e0505; --purpose-text: #fef2f2; --footer-bg: #2e0505;
+            --secondary: #fb923c; --primary: #f97316; --primary-light: #fb923c;
+            --gradient-overlay: hsla(30,100%,74%,0.05); --primary-glow: rgba(249, 115, 22, 0.25); --primary-glow-strong: rgba(249, 115, 22, 0.5);
+            
+            --btn-nav-bg: var(--primary); --popup-shadow: 0 8px 30px rgba(0,0,0,0.5);
+            --img-shadow: 0 2rem 4rem -1rem rgba(0,0,0,0.5); --img-shadow-hover: 0 0 50px rgba(249, 115, 22, 0.4);
+            --img-opacity: 0.9; --card-hover-shadow: 0 25px 50px -20px rgba(0,0,0,0.5); --step-hover-shadow: 0 15px 30px -10px rgba(0,0,0,0.4);
+        }
+
+        /* Amethyst Theme */
+        body[data-theme="amethyst"] {
+            --bg-color: #2e1065; --text-main: #f5f3ff; --text-muted: #c4b5fd;
+            --border-light: rgba(91, 33, 182, 0.5); --bg-card: #4c1d95;
+            --nav-bg: rgba(46, 16, 101, 0.85); --hover-bg: #5b21b6; --icon-bg: #5b21b6;
+            --purpose-bg: #1e1b4b; --purpose-text: #f5f3ff; --footer-bg: #1e1b4b;
+            --secondary: #a78bfa; --primary: #8b5cf6; --primary-light: #a78bfa;
+            --gradient-overlay: hsla(270,100%,74%,0.05); --primary-glow: rgba(139, 92, 246, 0.25); --primary-glow-strong: rgba(139, 92, 246, 0.5);
+            
+            --btn-nav-bg: var(--primary); --popup-shadow: 0 8px 30px rgba(0,0,0,0.5);
+            --img-shadow: 0 2rem 4rem -1rem rgba(0,0,0,0.5); --img-shadow-hover: 0 0 50px rgba(139, 92, 246, 0.4);
+            --img-opacity: 0.9; --card-hover-shadow: 0 25px 50px -20px rgba(0,0,0,0.5); --step-hover-shadow: 0 15px 30px -10px rgba(0,0,0,0.4);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { font-size: var(--base-font-size); scroll-behavior: smooth; }
 
-        body {
-            font-family: 'Inder', 'Tiro Bangla', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.5;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(at 0% 0%, var(--gradient-overlay) 0px, transparent 50%),
-                radial-gradient(at 100% 0%, hsla(200,100%,74%,0.05) 0px, transparent 50%);
-            background-attachment: fixed;
-            transition: background-color 0.4s, color 0.4s;
-        }
+        /* General Typography */
+        body { font-family: 'Fira Sans', sans-serif; background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; overflow-x: hidden; background-image: radial-gradient(at 0% 0%, var(--gradient-overlay) 0px, transparent 50%), radial-gradient(at 100% 0%, hsla(200,100%,74%,0.05) 0px, transparent 50%); background-attachment: fixed; transition: background-color 0.4s, color 0.4s; position: relative; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Fira Sans', sans-serif; font-weight: 700; }
 
-        h1, h2, h3, h4, .bangla-font { font-family: 'Tiro Bangla', serif; }
+        /* Typography Mapping per Language - Specifically configured for Bangla */
+        html[lang="bn"] body, html[lang="bn"] p, html[lang="bn"] span, html[lang="bn"] li, html[lang="bn"] div { font-family: 'Hind Siliguri', sans-serif; }
+        
+        /* ATMA for Headings and Highlighting */
+        html[lang="bn"] h1, html[lang="bn"] h2, html[lang="bn"] h3, html[lang="bn"] h4, html[lang="bn"] h5, html[lang="bn"] h6, html[lang="bn"] strong, html[lang="bn"] .atma-font { font-family: 'Atma', cursive; font-weight: 700; letter-spacing: 0.3px; }
+
+        /* Hindi & Arabic */
+        html[lang="hi"] body { font-family: 'Tiro Devanagari Hindi', serif; }
+        html[lang="hi"] h1, html[lang="hi"] h2, html[lang="hi"] h3, html[lang="hi"] h4, html[lang="hi"] h5, html[lang="hi"] h6, html[lang="hi"] .bangla-font { font-family: 'Tiro Devanagari Hindi', serif; font-weight: 700; }
+
+        html[lang="ar"] body { font-family: 'Lateef', serif; font-size: 1.25rem; }
+        html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3, html[lang="ar"] h4, html[lang="ar"] h5, html[lang="ar"] h6, html[lang="ar"] .bangla-font { font-family: 'Lateef', serif; font-weight: 700; font-size: 1.2em; }
+
+        .abid-font { font-family: 'Inder', sans-serif !important; letter-spacing: 0.5px; font-weight: 400; }
+
+        /* RTL Specific Tweak */
+        html[dir="rtl"] nav, html[dir="rtl"] .nav-controls, html[dir="rtl"] .logo { flex-direction: row; }
+        html[dir="rtl"] .hero, html[dir="rtl"] .purpose-banner { text-align: right; }
+        html[dir="rtl"] .hero-actions { justify-content: flex-start; }
+        html[dir="rtl"] .highlight-card, html[dir="rtl"] .feature-card, html[dir="rtl"] .hc-text, html[dir="rtl"] .f-list li { text-align: right; }
+        html[dir="rtl"] .f-list li { justify-content: flex-start; padding-right: 0; }
+        html[dir="rtl"] .dropdown-popup { right: auto; left: 0; }
+        html[dir="rtl"] .dropdown-popup::before { right: auto; left: 24px; }
+        html[dir="rtl"] .btn-primary i, html[dir="rtl"] .f-list li i { margin-right: 0; margin-left: 0.6rem; }
+        html[dir="rtl"] .dropdown-btn i:last-child { margin-left: 0; margin-right: 5px; }
+        html[dir="rtl"] .step-card, html[dir="rtl"] footer, html[dir="rtl"] .purpose-banner { text-align: center; }
+
+        /* ----- Ambient Glowing Blobs ----- */
+        .ambient-blob { position: fixed; border-radius: 50%; filter: blur(100px); opacity: 0.5; z-index: -1; pointer-events: none; animation: floatBlob 12s infinite alternate ease-in-out; }
+        .blob-1 { top: -10%; left: -5%; width: 40vw; height: 40vw; background: var(--primary-glow-strong); }
+        .blob-2 { bottom: -10%; right: -5%; width: 35vw; height: 35vw; background: rgba(56, 189, 248, 0.15); animation-delay: -5s; animation-direction: alternate-reverse; }
 
         /* ----- Animations ----- */
-        @keyframes floatImage { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
+        @keyframes floatBlob { 0% { transform: translate(0, 0) scale(1); } 50% { transform: translate(5%, 10%) scale(1.1); } 100% { transform: translate(-5%, -5%) scale(0.9); } }
+        @keyframes floatImage { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); filter: drop-shadow(0 20px 30px var(--primary-glow-strong)); } 100% { transform: translateY(0px); } }
 
-        .reveal {
-            opacity: 0; transform: translateY(40px) scale(0.95);
-            transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
-            transition-delay: var(--delay, 0s); will-change: opacity, transform;
-        }
+        .reveal { opacity: 0; transform: translateY(40px) scale(0.95); transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1); transition-delay: var(--delay, 0s); will-change: opacity, transform; }
         .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
 
         @keyframes cardScrollGlow {
             0% { box-shadow: 0 20px 40px -20px rgba(0,0,0,0.1); border-color: var(--border-light); }
-            50% { box-shadow: 0 0 35px rgba(56, 189, 248, 0.25), 0 0 45px rgba(16, 185, 129, 0.3); border-color: var(--primary-light); }
-            100% { box-shadow: 0 20px 40px -20px rgba(0,0,0,0.1); border-color: var(--border-light); }
+            50% { box-shadow: 0 0 35px var(--primary-glow-strong), 0 0 45px rgba(56, 189, 248, 0.2); border-color: var(--primary-light); transform: scale(1.02); }
+            100% { box-shadow: 0 20px 40px -20px rgba(0,0,0,0.1); border-color: var(--border-light); transform: scale(1); }
         }
         .feature-card.reveal.active { animation: cardScrollGlow 1.8s ease-in-out forwards; animation-delay: calc(var(--delay, 0s) + 0.6s); }
 
         /* ----- Navigation & Custom Dropdowns ----- */
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0.9rem 3%; position: fixed; top: 0; width: 100%;
-            background: var(--nav-bg); backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid var(--border-light);
-            z-index: 1000; transition: background 0.4s, border-color 0.4s;
-        }
-
-        .logo { font-size: 1.2rem; font-weight: 700; color: var(--secondary); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 3%; position: fixed; top: 0; width: 100%; background: var(--nav-bg); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid var(--border-light); z-index: 1000; transition: background 0.4s, border-color 0.4s; }
+        .logo { font-size: 1.2rem; font-weight: 700; color: var(--secondary); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: 0.3s; }
+        .logo:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary-glow-strong); }
         .logo i { color: var(--primary); font-size: 1.4rem; }
         
         .nav-controls { display: flex; align-items: center; gap: 1rem; }
 
-        .btn-nav {
-            background: #0f172a; color: #fff; padding: 0.5rem 1.3rem; border-radius: 100px; 
-            text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: 0.3s;
-        }
-        body.dark-mode .btn-nav { background: var(--primary); }
-        .btn-nav:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(5, 150, 105, 0.3); }
+        .btn-nav { background: var(--btn-nav-bg); color: #fff; padding: 0.5rem 1.3rem; border-radius: 100px; text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: 0.3s; position: relative; overflow: hidden;}
+        .btn-nav:hover { transform: translateY(-2px); box-shadow: 0 5px 15px var(--primary-glow-strong); color: #fff; }
 
-        /* Dropdown Styling (Matches Uploaded Image) */
+        /* Dropdown Styling */
         .dropdown-container { position: relative; display: inline-block; }
-        .dropdown-btn { 
-            background: transparent; border: 1px solid transparent; border-radius: 6px;
-            font-size: 0.95rem; color: var(--text-main); cursor: pointer; display: flex; 
-            align-items: center; gap: 0.5rem; padding: 0.4rem 0.6rem; font-family: inherit; transition: 0.2s;
-        }
+        .dropdown-btn { background: transparent; border: 1px solid transparent; border-radius: 6px; font-size: 0.95rem; color: var(--text-main); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.6rem; font-family: inherit; transition: 0.2s; }
         .dropdown-btn:hover { background: var(--hover-bg); border-color: var(--border-light); }
         
-        .dropdown-popup {
-            position: absolute; top: calc(100% + 12px); right: 0; background: var(--bg-card);
-            border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,0.12); padding: 8px;
-            min-width: 170px; display: none; flex-direction: column; gap: 4px; z-index: 1001;
-            border: 1px solid var(--border-light);
-        }
-        body.dark-mode .dropdown-popup { box-shadow: 0 8px 30px rgba(0,0,0,0.5); }
-        .dropdown-popup::before {
-            content: ''; position: absolute; top: -7px; right: 24px; width: 12px; height: 12px;
-            background: var(--bg-card); transform: rotate(45deg); 
-            border-top: 1px solid var(--border-light); border-left: 1px solid var(--border-light);
-        }
+        .dropdown-popup { position: absolute; top: calc(100% + 12px); right: 0; background: var(--bg-card); border-radius: 8px; box-shadow: var(--popup-shadow); padding: 8px; min-width: 170px; display: none; flex-direction: column; gap: 4px; z-index: 1001; border: 1px solid var(--border-light); transition: 0.3s; }
+        .dropdown-popup::before { content: ''; position: absolute; top: -7px; right: 24px; width: 12px; height: 12px; background: var(--bg-card); transform: rotate(45deg); border-top: 1px solid var(--border-light); border-left: 1px solid var(--border-light); }
         .dropdown-popup.show { display: flex; }
 
-        .dropdown-item {
-            display: flex; align-items: center; gap: 12px; padding: 8px 12px;
-            border-radius: 6px; cursor: pointer; border: 2px solid transparent;
-            font-size: 0.95rem; font-weight: 500; color: var(--text-main); transition: 0.2s;
-        }
+        .dropdown-item { display: flex; align-items: center; gap: 12px; padding: 8px 12px; border-radius: 6px; cursor: pointer; border: 2px solid transparent; font-size: 0.95rem; font-weight: 500; color: var(--text-main); transition: 0.2s; }
         .dropdown-item:hover { background: var(--hover-bg); }
-        /* Active State mimicking the image */
-        .dropdown-item.active { border-color: #0b6bc8; background: var(--hover-bg); }
+        .dropdown-item.active { border-color: var(--primary); background: var(--hover-bg); }
         
-        /* Custom Mini Icons for Toggles */
-        .theme-preview {
-            width: 32px; height: 24px; border-radius: 3px; border: 1px solid rgba(150,150,150,0.3);
-            display: flex; flex-direction: column; overflow: hidden; position: relative; flex-shrink: 0;
-        }
+        /* Custom Mini Icons */
+        .theme-preview { width: 32px; height: 24px; border-radius: 3px; border: 1px solid rgba(150,150,150,0.3); display: flex; flex-direction: column; overflow: hidden; position: relative; flex-shrink: 0; }
         .theme-preview.light { background: #fdfdfd; }
         .theme-preview.light::before { content: ''; height: 6px; background: #e0e0e0; display: block; }
-        .theme-preview.light::after { content: ''; position: absolute; top: 10px; left: 4px; width: 10px; height: 3px; background: #0b6bc8; }
+        .theme-preview.light::after { content: ''; position: absolute; top: 10px; left: 4px; width: 10px; height: 3px; background: #059669; }
+        
         .theme-preview.dark { background: #202020; border-color: #555; }
         .theme-preview.dark::before { content: ''; height: 6px; background: #333; display: block; }
-        .theme-preview.dark::after { content: ''; position: absolute; top: 10px; left: 4px; width: 10px; height: 3px; background: #60a5fa; }
+        .theme-preview.dark::after { content: ''; position: absolute; top: 10px; left: 4px; width: 10px; height: 3px; background: #10b981; }
+
+        .theme-preview.ocean { background: #0f172a; border-color: #3b82f6; }
+        .theme-preview.ocean::before { content: ''; height: 6px; background: #1e293b; display: block; }
+        .theme-preview.ocean::after { content: ''; position: absolute; top: 10px; left: 4px; width: 10px; height: 3px; background: #60a5fa; }
+
+        .theme-preview.forest { background: #064e3b; border-color: #10b981; }
+        .theme-preview.forest::before { content: ''; height: 6px; background: #065f46; display: block; }
+        .theme-preview.forest::after { content: ''; position: absolute; top: 10px; left: 4px; width: 10px; height: 3px; background: #34d399; }
+
+        .theme-preview.sunset { background: #450a0a; border-color: #f97316; }
+        .theme-preview.sunset::before { content: ''; height: 6px; background: #7f1d1d; display: block; }
+        .theme-preview.sunset::after { content: ''; position: absolute; top: 10px; left: 4px; width: 10px; height: 3px; background: #fb923c; }
+
+        .theme-preview.amethyst { background: #2e1065; border-color: #8b5cf6; }
+        .theme-preview.amethyst::before { content: ''; height: 6px; background: #4c1d95; display: block; }
+        .theme-preview.amethyst::after { content: ''; position: absolute; top: 10px; left: 4px; width: 10px; height: 3px; background: #a78bfa; }
+
         .lang-icon { width: 32px; height: 24px; background: var(--icon-bg); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: bold; color: var(--primary); border: 1px solid var(--border-light); }
 
         /* ----- Hero Section ----- */
-        .hero { padding: 9rem 5% 4rem; max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; }
-        .purpose-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(16, 185, 129, 0.1); color: var(--primary); padding: 0.4rem 1rem; border-radius: 100px; font-weight: 700; font-size: 0.8rem; margin-bottom: 1.3rem; border: 1px solid var(--primary-light); }
-        .hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); line-height: 1.15; color: var(--secondary); margin-bottom: 1.2rem; transition: color 0.4s; }
+        .hero { padding: 9rem 5% 4rem; max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; position: relative;}
+        .purpose-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--primary-glow); color: var(--primary); padding: 0.4rem 1rem; border-radius: 100px; font-weight: 700; font-size: 0.8rem; margin-bottom: 1.3rem; border: 1px solid var(--primary-light); box-shadow: 0 0 15px var(--primary-glow); }
+        .hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); line-height: 1.15; color: var(--secondary); margin-bottom: 1rem; transition: color 0.4s; }
+        
+        /* Typing Effect Container */
+        .typing-container { font-size: 1.3rem; color: var(--primary); margin-bottom: 1.5rem; font-weight: 600; min-height: 2rem; display: flex; align-items: center; gap: 5px; }
+        html[lang="bn"] .typing-container { font-family: 'Atma', cursive; font-weight: 700; font-size: 1.5rem; }
+        .typing-cursor { display: inline-block; width: 3px; height: 1.2em; background-color: var(--primary); animation: blink 0.8s infinite; border-radius: 2px; box-shadow: 0 0 5px var(--primary); }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
         .hero p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2.3rem; max-width: 33rem; }
         .hero-actions { display: flex; align-items: center; gap: 1.3rem; }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white; padding: 1rem 2rem; border-radius: 0.9rem; text-decoration: none;
-            font-weight: 700; font-size: 1rem; display: inline-flex; align-items: center; gap: 0.6rem;
-            transition: 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 1rem 2rem -0.6rem rgba(5, 150, 105, 0.3);
-        }
-        .btn-primary:hover { box-shadow: 0 1.2rem 2.5rem -0.5rem rgba(5, 150, 105, 0.5); transform: translateY(-4px); color: white;}
+        /* Button Enhancements */
+        .btn-primary { position: relative; overflow: hidden; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 1rem 2rem; border-radius: 0.9rem; text-decoration: none; font-weight: 700; font-size: 1rem; display: inline-flex; align-items: center; gap: 0.6rem; transition: 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 0 15px var(--primary-glow-strong); border: none; cursor: pointer; }
+        .btn-primary::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 50%); opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+        .btn-primary:hover::after { opacity: 1; animation: glowPulse 1.5s infinite; }
+        @keyframes glowPulse { 0% { transform: scale(0.9); } 50% { transform: scale(1.1); } 100% { transform: scale(0.9); } }
+        .btn-primary:hover { transform: translateY(-4px); box-shadow: 0 1rem 2.5rem -0.5rem rgba(5, 150, 105, 0.6); color: white;}
 
         .link-install { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 0.3rem; border-bottom: 1px dashed var(--primary); padding-bottom: 2px; transition: 0.3s; }
-        .link-install:hover { color: var(--text-main); border-color: var(--text-main); }
+        .link-install:hover { color: var(--text-main); border-color: var(--text-main); text-shadow: 0 0 8px var(--primary-glow-strong); }
 
-        .hero-img { width: 100%; border-radius: 1.6rem; box-shadow: 0 2rem 4rem -1rem rgba(0,0,0,0.1); animation: floatImage 4s ease-in-out infinite; transition: transform 0.4s ease, box-shadow 0.4s ease; cursor: pointer; }
-        body.dark-mode .hero-img { opacity: 0.9; box-shadow: 0 2rem 4rem -1rem rgba(0,0,0,0.5); }
-        .hero-img:hover { transform: scale(1.02) translateY(-5px); box-shadow: 0 2.5rem 5rem -1rem rgba(0,0,0,0.15); animation-play-state: paused; }
+        .hero-img { width: 100%; border-radius: 1.6rem; box-shadow: var(--img-shadow); opacity: var(--img-opacity); animation: floatImage 4s ease-in-out infinite; transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease; cursor: pointer; position: relative; z-index: 2; border: 1px solid var(--border-light); }
+        .hero-img:hover { transform: scale(1.02) translateY(-5px); box-shadow: var(--img-shadow-hover); filter: drop-shadow(0 0 30px var(--primary-glow-strong)); animation-play-state: paused; }
 
         /* ----- Highlight Cards ----- */
         .top-features { max-width: 1300px; margin: 0 auto 5rem; padding: 0 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1.3rem; }
         .highlight-card { background: var(--bg-card); border: 1px solid var(--border-light); padding: 1.2rem; border-radius: 1.3rem; display: flex; align-items: center; gap: 0.8rem; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s, background 0.4s; }
-        .highlight-card:hover { transform: translateY(-5px) scale(1.02); border-color: var(--primary-light); box-shadow: 0 12px 24px -10px rgba(16, 185, 129, 0.2); z-index: 10; }
-        .hc-icon { width: 3rem; height: 3rem; background: var(--icon-bg); color: var(--primary); border-radius: 0.8rem; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; transition: 0.3s; }
-        .highlight-card:hover .hc-icon { background: var(--primary-glow); transform: scale(1.1) rotate(5deg); }
-        .hc-text h4 { font-size: 0.95rem; color: var(--secondary); margin-bottom: 2px; }
-        .hc-text p { font-size: 0.8rem; color: var(--text-muted); }
+        .highlight-card:hover { transform: translateY(-5px) scale(1.02); border-color: var(--primary-light); box-shadow: 0 12px 24px -10px var(--primary-glow-strong); z-index: 10; }
+        .hc-icon { width: 3rem; height: 3rem; background: var(--icon-bg); color: var(--primary); border-radius: 0.8rem; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; transition: 0.3s; box-shadow: inset 0 0 10px rgba(0,0,0,0.05); }
+        .highlight-card:hover .hc-icon { background: var(--primary-glow); transform: scale(1.1) rotate(5deg); box-shadow: 0 0 15px var(--primary-glow-strong); }
+        .hc-text h4 { font-size: 1.05rem; color: var(--secondary); margin-bottom: 2px; }
+        .hc-text p { font-size: 0.85rem; color: var(--text-muted); }
 
         /* ----- Purpose Banner ----- */
-        .purpose-banner { background: var(--purpose-bg); margin-bottom: 5rem; padding: 4.5rem 5%; text-align: center; transition: background 0.4s; }
-        .purpose-content h2 { color: var(--purpose-text); font-size: 1.8rem; font-weight: 400; }
+        .purpose-banner { background: var(--purpose-bg); margin-bottom: 5rem; padding: 4.5rem 5%; text-align: center; transition: background 0.4s; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); position: relative; overflow: hidden; }
+        .purpose-banner::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%); pointer-events: none; }
+        .purpose-content h2 { color: var(--purpose-text); font-size: 1.8rem; font-weight: 400; position: relative; z-index: 2;}
 
         /* ----- Feature Grid ----- */
         .features-grid { max-width: 1200px; margin: 0 auto 6.5rem; padding: 0 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 1.6rem; }
-        .feature-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 1.6rem; padding: 2.6rem 2rem; transition: transform 0.4s, box-shadow 0.4s, background 0.4s; position: relative; overflow: hidden; }
+        .feature-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 1.6rem; padding: 2.6rem 2rem; transition: transform 0.4s, box-shadow 0.4s, background 0.4s, border-color 0.4s; position: relative; overflow: hidden; }
         .feature-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--primary), var(--accent)); opacity: 0; transition: 0.4s; }
-        .feature-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 25px 50px -20px rgba(0,0,0,0.15); }
-        body.dark-mode .feature-card:hover { box-shadow: 0 25px 50px -20px rgba(0,0,0,0.5); }
+        .feature-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 0 30px var(--primary-glow); border-color: var(--primary-glow-strong); }
         .feature-card:hover::before { opacity: 1; }
-        .f-icon-wrap { width: 3.7rem; height: 3.7rem; background: var(--icon-bg); border-radius: 1rem; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--primary); margin-bottom: 1.8rem; transition: 0.3s; }
-        .feature-card:hover .f-icon-wrap { background: var(--primary-glow); transform: scale(1.1); }
+        .f-icon-wrap { width: 3.7rem; height: 3.7rem; background: var(--icon-bg); border-radius: 1rem; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--primary); margin-bottom: 1.8rem; transition: 0.3s; box-shadow: inset 0 0 10px rgba(0,0,0,0.05); }
+        .feature-card:hover .f-icon-wrap { background: var(--primary-glow); transform: scale(1.1); box-shadow: 0 0 20px var(--primary-glow-strong); }
         .f-list li { list-style: none; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.6rem; color: var(--text-muted); font-size: 0.95rem; }
-        .f-list li i { color: var(--primary); background: rgba(16, 185, 129, 0.1); width: 1.6rem; height: 1.6rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 0.8rem; }
+        .f-list li i { color: var(--primary); background: var(--primary-glow); width: 1.6rem; height: 1.6rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 0.8rem; }
 
         /* ----- Installation Section ----- */
         .install-section { background: var(--bg-card); padding: 5rem 5%; border-top: 1px solid var(--border-light); transition: background 0.4s; }
         .step-card { text-align: center; padding: 2rem 1.6rem; border-radius: 1.3rem; background: var(--bg-color); border: 1px solid var(--border-light); transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s; }
-        .step-card:hover { border-color: var(--primary-light); box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1); transform: translateY(-5px); }
-        body.dark-mode .step-card:hover { box-shadow: 0 15px 30px -10px rgba(0,0,0,0.4); }
-        .step-number { width: 2.4rem; height: 2.4rem; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin: 0 auto 1rem; font-size: 0.9rem; }
+        .step-card:hover { border-color: var(--primary-light); box-shadow: 0 0 25px var(--primary-glow); transform: translateY(-5px); }
+        .step-number { width: 2.4rem; height: 2.4rem; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin: 0 auto 1rem; font-size: 0.9rem; box-shadow: 0 0 15px var(--primary-glow-strong); }
 
-        footer { background: var(--footer-bg); padding: 3.3rem 5% 2rem; text-align: center; transition: background 0.4s; }
+        footer { background: var(--footer-bg); padding: 3.3rem 5% 2rem; text-align: center; transition: background 0.4s; border-top: 1px solid var(--border-light); }
         footer h3 { font-size: 1.3rem; }
         footer p { font-size: 0.9rem; }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float { position: fixed; bottom: 25px; right: 90px; background-color: #25d366; color: #fff; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 1000; transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); animation: pulse-wa 2s infinite; text-decoration: none; }
+        .whatsapp-float:hover { transform: scale(1.1) rotate(5deg); background-color: #128C7E; color: white; animation-play-state: paused; }
+        @keyframes pulse-wa {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
 
         /* Sticky Download Bar & Back to Top */
         #stickyDownload { position: fixed; bottom: 0; left: 0; width: 100%; border-radius: 0; text-align: center; justify-content: center; padding: 1.2rem; font-size: 1.2rem; z-index: 999; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 -10px 25px rgba(0,0,0,0.15); }
         #stickyDownload.show { transform: translateY(0); }
-        .back-to-top { position: fixed; bottom: 25px; right: 25px; background: var(--primary); color: white; width: 50px; height: 50px; border-radius: 50%; border: none; font-size: 1.2rem; cursor: pointer; z-index: 1000; opacity: 0; pointer-events: none; transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; }
-        .back-to-top:hover { background: var(--primary-light); transform: translateY(-5px); }
+        .back-to-top { position: fixed; bottom: 25px; right: 25px; background: var(--primary); color: white; width: 50px; height: 50px; border-radius: 50%; border: none; font-size: 1.2rem; cursor: pointer; z-index: 1000; opacity: 0; pointer-events: none; transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 5px 15px var(--primary-glow-strong); display: flex; align-items: center; justify-content: center; }
+        .back-to-top:hover { background: var(--primary-light); transform: translateY(-5px); box-shadow: 0 8px 20px var(--primary-glow-strong); }
 
         @media (min-width: 769px) { #stickyDownload { display: none; } .back-to-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); } }
         @media (max-width: 768px) {
@@ -228,28 +309,34 @@
             .hero p { margin: 0 auto 2rem; }
             .hero-actions { justify-content: center; flex-direction: column; }
             body { padding-bottom: 70px; }
-            .back-to-top.show { opacity: 1; pointer-events: auto; transform: translateY(-75px); }
-            .back-to-top:hover { transform: translateY(-80px); }
-            .btn-text { display: none; } /* Hide text on mobile nav icons */
+            .typing-container { justify-content: center; }
+            /* Adjust WA button for mobile sticky bar */
+            .whatsapp-float { bottom: 85px; right: 20px; }
+            .back-to-top.show { opacity: 1; pointer-events: auto; transform: translateY(-135px); bottom: 20px;}
+            .back-to-top:hover { transform: translateY(-140px); }
+            .btn-text { display: none; }
         }
     </style>
 </head>
-<body>
+<body data-theme="dark">
+    <!-- Ambient glowing backgrounds -->
+    <div class="ambient-blob blob-1"></div>
+    <div class="ambient-blob blob-2"></div>
 
     <nav>
-        <a href="https://fb.com/abidaljamee" class="logo"><i class="fas fa-cubes"></i> <span data-i18n="logoTitle">AbidSuite</span></a>
+        <a href="https://fb.com/abidaljamee" class="logo"><i class="fas fa-cubes"></i> <span data-i18n="logoTitle"><span class='abid-font'>AbidSuite</span></span></a>
         
         <div class="nav-controls">
-            <!-- Language Dropdown -->
+            <!-- Language Switcher -->
             <div class="dropdown-container">
                 <button class="dropdown-btn" id="langBtn" title="Language">
                     <i class="fas fa-globe"></i> 
-                    <span class="btn-text bangla-font" id="currentLangText">বাংলা</span> 
-                    <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 2px;"></i>
+                    <span class="btn-text" id="currentLangText">বাংলা</span> 
+                    <i class="fas fa-chevron-down" style="font-size: 0.8em;"></i>
                 </button>
                 <div class="dropdown-popup" id="langPopup">
                     <div class="dropdown-item active" data-lang="bn">
-                        <div class="lang-icon">BN</div> <span class="bangla-font">বাংলা</span>
+                        <div class="lang-icon">BN</div> <span>বাংলা</span>
                     </div>
                     <div class="dropdown-item" data-lang="en">
                         <div class="lang-icon">EN</div> <span>English</span>
@@ -257,27 +344,41 @@
                     <div class="dropdown-item" data-lang="hi">
                         <div class="lang-icon">HI</div> <span>हिन्दी</span>
                     </div>
+                    <div class="dropdown-item" data-lang="ar">
+                        <div class="lang-icon">AR</div> <span>العربية</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Theme Dropdown (Styled like the uploaded image) -->
+            <!-- Theme Switcher -->
             <div class="dropdown-container">
                 <button class="dropdown-btn" id="themeBtn" title="Theme">
-                    <i class="fas fa-sun" id="themeIcon"></i> 
-                    <span class="btn-text" data-i18n="navTheme">Theme</span> 
-                    <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 2px;"></i>
+                    <i class="fas fa-moon" id="themeIcon"></i> <span class="btn-text" data-i18n="navTheme">Theme</span> 
+                    <i class="fas fa-chevron-down" style="font-size: 0.8em;"></i>
                 </button>
                 <div class="dropdown-popup" id="themePopup">
-                    <div class="dropdown-item active" data-theme="light">
+                    <div class="dropdown-item" data-theme="light">
                         <div class="theme-preview light"></div> <span data-i18n="themeLight">Light</span>
                     </div>
-                    <div class="dropdown-item" data-theme="dark">
+                    <div class="dropdown-item active" data-theme="dark"> 
                         <div class="theme-preview dark"></div> <span data-i18n="themeDark">Dark</span>
+                    </div>
+                    <div class="dropdown-item" data-theme="ocean"> 
+                        <div class="theme-preview ocean"></div> <span data-i18n="themeOcean">Ocean</span>
+                    </div>
+                    <div class="dropdown-item" data-theme="forest"> 
+                        <div class="theme-preview forest"></div> <span data-i18n="themeForest">Forest</span>
+                    </div>
+                    <div class="dropdown-item" data-theme="sunset"> 
+                        <div class="theme-preview sunset"></div> <span data-i18n="themeSunset">Sunset</span>
+                    </div>
+                    <div class="dropdown-item" data-theme="amethyst"> 
+                        <div class="theme-preview amethyst"></div> <span data-i18n="themeAmethyst">Amethyst</span>
                     </div>
                 </div>
             </div>
 
-            <a href="https://drive.google.com/uc?export=download&id=1ufrjQ1Ji3qEUDSbXX0W7xZguEFYedDpR" class="btn-nav bangla-font" data-i18n="navDownload"><i>Download</i></a>
+            <a href="https://drive.google.com/uc?export=download&id=1ufrjQ1Ji3qEUDSbXX0W7xZguEFYedDpR" class="btn-nav" data-i18n="navDownload">Download</a>
         </div>
     </nav>
 
@@ -285,11 +386,18 @@
         <section class="hero">
             <div class="hero-content">
                 <div class="purpose-badge reveal" style="--delay: 0.1s;" data-i18n="heroBadge"><i class="fas fa-shield-heart"></i> বাংলা ভাষার প্রসারে একটি ক্ষুদ্র প্রয়াস</div>
-                <h1 class="bangla-font reveal" style="--delay: 0.2s;" data-i18n="heroTitle">ওয়ার্ড ডকুমেন্টে <br>কাজের গতি হবে <span style="color: var(--primary);">দ্বিগুণ</span></h1>
-                <p class="bangla-font reveal" style="--delay: 0.3s;" data-i18n="heroDesc">AbidSuite হলো মাইক্রোসফট ওয়ার্ডের একটি স্মার্ট এক্সটেনশন, যা আপনার বাংলা টাইপিং, ফরম্যাটিং এবং ডকুমেন্ট ক্লিনিংয়ের কাজকে করবে আরও সহজ ও প্রফেশনাল।</p>
+                <h1 class="reveal" style="--delay: 0.2s;" data-i18n="heroTitle">ওয়ার্ড ডকুমেন্টে <br>কাজের গতি হবে <span style="color: var(--primary);">দ্বিগুণ</span></h1>
+                
+                <!-- Typing Effect Addition -->
+                <div class="typing-container reveal" style="--delay: 0.25s;">
+                    <span id="typing-prefix" data-i18n="typePrefix">আপনার ডকুমেন্ট হবে </span>
+                    <span id="typing-text"></span><span class="typing-cursor"></span>
+                </div>
+
+                <p class="reveal" style="--delay: 0.3s;" data-i18n="heroDesc"><span class='abid-font'>AbidSuite</span> হলো মাইক্রোসফট ওয়ার্ডের একটি স্মার্ট এক্সটেনশন, যা আপনার বাংলা টাইপিং, ফরম্যাটিং এবং ডকুমেন্ট ক্লিনিংয়ের কাজকে করবে আরও সহজ ও প্রফেশনাল।</p>
                 <div class="hero-actions reveal" style="--delay: 0.4s;">
-                    <a href="https://drive.google.com/uc?export=download&id=1ufrjQ1Ji3qEUDSbXX0W7xZguEFYedDpR" class="btn-primary" data-i18n="btnDownload"><i class="fas fa-file-arrow-down"></i> ডাউনলোড AbidSuite</a>
-                    <a href="#install" class="link-install bangla-font" data-i18n="btnInstall"><i class="fas fa-circle-play"></i> installation process দেখুন</a>
+                    <a href="https://drive.google.com/uc?export=download&id=1ufrjQ1Ji3qEUDSbXX0W7xZguEFYedDpR" class="btn-primary" data-i18n="btnDownload"><i class="fas fa-file-arrow-down"></i> ডাউনলোড <span class='abid-font'>AbidSuite</span></a>
+                    <a href="#install" class="link-install" data-i18n="btnInstall"><i class="fas fa-circle-play"></i> installation process দেখুন</a>
                 </div>
             </div>
             <div class="hero-image-wrapper reveal" style="--delay: 0.4s;">
@@ -300,38 +408,38 @@
         <section class="top-features">
             <div class="highlight-card reveal" style="--delay: 0.1s;">
                 <div class="hc-icon"><i class="fas fa-sync-alt"></i></div>
-                <div class="hc-text bangla-font"><h4 data-i18n="hc1Title">বিজয় টু ইউনিকোড</h4><p data-i18n="hc1Desc">সহজ ফন্ট রূপান্তর</p></div>
+                <div class="hc-text"><h4 class="atma-font" data-i18n="hc1Title">বিজয় টু ইউনিকোড</h4><p data-i18n="hc1Desc">সহজ ফন্ট রূপান্তর</p></div>
             </div>
             <div class="highlight-card reveal" style="--delay: 0.2s;">
                 <div class="hc-icon"><i class="fas fa-calculator"></i></div>
-                <div class="hc-text bangla-font"><h4 data-i18n="hc2Title">অটো ক্যালকুলেশন</h4><p data-i18n="hc2Desc">টেবিল রো/কলাম যোগফল</p></div>
+                <div class="hc-text"><h4 class="atma-font" data-i18n="hc2Title">অটো ক্যালকুলেশন</h4><p data-i18n="hc2Desc">টেবিল রো/কলাম যোগফল</p></div>
             </div>
             <div class="highlight-card reveal" style="--delay: 0.3s;">
                 <div class="hc-icon"><i class="fas fa-broom"></i></div>
-                <div class="hc-text bangla-font"><h4 data-i18n="hc3Title">ডকুমেন্ট ক্লিনার</h4><p data-i18n="hc3Desc">এক ক্লিকে ক্লিন আপ</p></div>
+                <div class="hc-text"><h4 class="atma-font" data-i18n="hc3Title">ডকুমেন্ট ক্লিনার</h4><p data-i18n="hc3Desc">এক ক্লিকে ক্লিন আপ</p></div>
             </div>
             <div class="highlight-card reveal" style="--delay: 0.4s;">
                 <div class="hc-icon"><i class="fas fa-calendar-check"></i></div>
-                <div class="hc-text bangla-font"><h4 data-i18n="hc4Title">বাংলা তারিখ</h4><p data-i18n="hc4Desc">অটো বাংলা তারিখ</p></div>
+                <div class="hc-text"><h4 class="atma-font" data-i18n="hc4Title">বাংলা তারিখ</h4><p data-i18n="hc4Desc">অটো বাংলা তারিখ</p></div>
             </div>
             <div class="highlight-card reveal" style="--delay: 0.5s;">
                 <div class="hc-icon"><i class="fas fa-arrow-down-1-9"></i></div>
-                <div class="hc-text bangla-font"><h4 data-i18n="hc5Title">বাংলা সংখ্যা</h4><p data-i18n="hc5Desc">সংখ্যা থেকে কথায়</p></div>
+                <div class="hc-text"><h4 class="atma-font" data-i18n="hc5Title">বাংলা সংখ্যা</h4><p data-i18n="hc5Desc">সংখ্যা থেকে কথায়</p></div>
             </div>
         </section>
 
         <section class="purpose-banner reveal" style="--delay: 0.1s;">
             <div class="purpose-content">
-                <i class="fas fa-quote-left" style="color: var(--primary-light); font-size: 1.8rem; margin-bottom: 1rem; display: block;"></i>
-                <h2 class="bangla-font" data-i18n="purposeQuote">“আমাদের মাতৃভাষা বাংলাকে ডিজিটাল মাধ্যমে আরও প্রসারিত ও সমৃদ্ধ করার লক্ষ্যে <strong>AbidSuite</strong> তৈরি করা হয়েছে”</h2>
+                <i class="fas fa-quote-left" style="color: var(--primary-light); font-size: 1.8rem; margin-bottom: 1rem; display: block; filter: drop-shadow(0 0 10px var(--primary-glow-strong));"></i>
+                <h2 data-i18n="purposeQuote">“আমাদের মাতৃভাষা বাংলাকে ডিজিটাল মাধ্যমে আরও প্রসারিত ও সমৃদ্ধ করার লক্ষ্যে <strong class='abid-font' style="color:var(--primary-light);">AbidSuite</strong> তৈরি করা হয়েছে”</h2>
             </div>
         </section>
 
         <section class="features-grid">
             <div class="feature-card reveal" style="--delay: 0.1s;">
                 <div class="f-icon-wrap"><i class="fas fa-language"></i></div>
-                <h3 class="bangla-font" style="font-size: 1.2rem; margin-bottom: 1rem;" data-i18n="f1Title">ভাষা ও লোকালাইজেশন</h3>
-                <ul class="f-list bangla-font">
+                <h3 class="atma-font" style="font-size: 1.3rem; margin-bottom: 1rem;" data-i18n="f1Title">ভাষা ও লোকালাইজেশন</h3>
+                <ul class="f-list">
                     <li><i class="fas fa-check"></i> <span data-i18n="f1L1">বিজয় ও ইউনিকোড কনভার্সন</span></li>
                     <li><i class="fas fa-check"></i> <span data-i18n="f1L2">বাংলা-ইংরেজি সংখ্যা পরিবর্তন</span></li>
                     <li><i class="fas fa-check"></i> <span data-i18n="f1L3">অটো বাংলা তারিখ ও সংখ্যা</span></li>
@@ -341,8 +449,8 @@
 
             <div class="feature-card reveal" style="--delay: 0.2s;">
                 <div class="f-icon-wrap"><i class="fas fa-table"></i></div>
-                <h3 class="bangla-font" style="font-size: 1.2rem; margin-bottom: 1rem;" data-i18n="f2Title">টেবিল ও ম্যাথ টুলস</h3>
-                <ul class="f-list bangla-font">
+                <h3 class="atma-font" style="font-size: 1.3rem; margin-bottom: 1rem;" data-i18n="f2Title">টেবিল ও ম্যাথ টুলস</h3>
+                <ul class="f-list">
                     <li><i class="fas fa-check"></i> <span data-i18n="f2L1">কলাম ও রো এর ম্যাজিক সাম</span></li>
                     <li><i class="fas fa-check"></i> <span data-i18n="f2L2">টেবিল ট্রান্সপোজ সুবিধা</span></li>
                     <li><i class="fas fa-check"></i> <span data-i18n="f2L3">প্রফেশনাল টেবিল ফরম্যাটিং</span></li>
@@ -351,8 +459,8 @@
 
             <div class="feature-card reveal" style="--delay: 0.3s;">
                 <div class="f-icon-wrap"><i class="fas fa-photo-film"></i></div>
-                <h3 class="bangla-font" style="font-size: 1.2rem; margin-bottom: 1rem;" data-i18n="f3Title">মিডিয়া ও এক্সট্র্যাকশন</h3>
-                <ul class="f-list bangla-font">
+                <h3 class="atma-font" style="font-size: 1.3rem; margin-bottom: 1rem;" data-i18n="f3Title">মিডিয়া ও এক্সট্র্যাকশন</h3>
+                <ul class="f-list">
                     <li><i class="fas fa-check"></i> <span data-i18n="f3L1">এক ক্লিকে সব ছবি ফোল্ডারে সেভ</span></li>
                     <li><i class="fas fa-check"></i> <span data-i18n="f3L2">ডকুমেন্টের সব টেবিল আলাদা এক্সট্র্যাক্ট</span></li>
                     <li><i class="fas fa-check"></i> <span data-i18n="f3L3">অটোমেটিক টাইমস্ট্যাম্প ও অর্গানাইজেশন</span></li>
@@ -361,9 +469,9 @@
 
             <div class="feature-card reveal" style="--delay: 0.4s;">
                 <div class="f-icon-wrap"><i class="fas fa-square-root-variable"></i></div>
-                <h3 class="bangla-font" style="font-size: 1.2rem; margin-bottom: 1rem;" data-i18n="f4Title">ম্যাথ ও নিউমেরিক টুলস</h3>
-                <ul class="f-list bangla-font">
-                    <li><i class="fas fa-check"></i> <span data-i18n="f4L1">শর্টহ্যান্ড থেকে অ্যাডভান্সড EQ Field</span></li>
+                <h3 class="atma-font" style="font-size: 1.3rem; margin-bottom: 1rem;" data-i18n="f4Title">ম্যাথ ও নিউমেরিক টুলস</h3>
+                <ul class="f-list">
+                    <li><i class="fas fa-check"></i> <span data-i18n="f4L1">ভগ্নাংশ ও সুপারস্ক্রিপ্ট (Advanced EQ)</span></li>
                     <li><i class="fas fa-check"></i> <span data-i18n="f4L2">রোমান ও ইংরেজি সংখ্যার অটো কনভার্সন</span></li>
                     <li><i class="fas fa-check"></i> <span data-i18n="f4L3">কমপ্লেক্স ইকুয়েশন রেন্ডারিং সাপোর্ট</span></li>
                 </ul>
@@ -371,8 +479,8 @@
 
             <div class="feature-card reveal" style="--delay: 0.1s;">
                 <div class="f-icon-wrap"><i class="fas fa-layer-group"></i></div>
-                <h3 class="bangla-font" style="font-size: 1.2rem; margin-bottom: 1rem;" data-i18n="f5Title">অ্যাডভান্সড অটোমেশন</h3>
-                <ul class="f-list bangla-font">
+                <h3 class="atma-font" style="font-size: 1.3rem; margin-bottom: 1rem;" data-i18n="f5Title">অ্যাডভান্সড অটোমেশন</h3>
+                <ul class="f-list">
                     <li><i class="fas fa-check"></i> <span data-i18n="f5L1">কাস্টম রিবন ও কুইক এক্সেস প্যানেল</span></li>
                     <li><i class="fas fa-check"></i> <span data-i18n="f5L2">মাল্টিপল ম্যাক্রো ইন্টিগ্রেশন</span></li>
                     <li><i class="fas fa-check"></i> <span data-i18n="f5L3">অটোমেটিক টেমপ্লেট ও এনভায়রনমেন্ট সেটআপ</span></li>
@@ -381,28 +489,33 @@
 
             <div class="feature-card reveal" style="--delay: 0.2s;">
                 <div class="f-icon-wrap"><i class="fas fa-bolt"></i></div>
-                <h3 class="bangla-font" style="font-size: 1.2rem; margin-bottom: 1rem;" data-i18n="f6Title">পাওয়ার ইউটিলিটি</h3>
-                <ul class="f-list bangla-font">
+                <h3 class="atma-font" style="font-size: 1.3rem; margin-bottom: 1rem;" data-i18n="f6Title">পাওয়ার ইউটিলিটি</h3>
+                <ul class="f-list">
                     <li><i class="fas fa-check"></i> <span data-i18n="f6L1">কুইক QR Code জেনারেটর</span></li>
                     <li><i class="fas fa-check"></i> <span data-i18n="f6L2">ডকুমেন্ট টু ইমেজ এক্সপোর্ট</span></li>
                     <li><i class="fas fa-check"></i> <span data-i18n="f6L3">মাল্টি-পেস্ট ক্লিপবোর্ড</span></li>
+                    <li><i class="fas fa-check"></i> <span data-i18n="f6L4">টেক্সট থেকে বক্স</span></li>
+                    <li><i class="fas fa-check"></i> <span data-i18n="f6L5">ফোন নম্বর ফরমেটার</span></li>
                 </ul>
             </div>
 
             <div class="feature-card reveal" style="--delay: 0.3s;">
                 <div class="f-icon-wrap"><i class="fas fa-magnifying-glass-chart"></i></div>
-                <h3 class="bangla-font" style="font-size: 1.2rem; margin-bottom: 1rem;" data-i18n="f7Title">অ্যাডভান্সড ফাইন্ড ও রিপ্লেস</h3>
-                <ul class="f-list bangla-font">
+                <h3 class="atma-font" style="font-size: 1.3rem; margin-bottom: 1rem;" data-i18n="f7Title">অ্যাডভান্সড ফাইন্ড ও রিপ্লেস</h3>
+                <ul class="f-list">
                     <li><i class="fas fa-check"></i> <span data-i18n="f7L1">বাংলা-ইংরেজি মিক্সড টেক্সট ফিক্স</span></li>
-                    <li><i class="fas fa-check"></i> <span data-i18n="f7L2">অপ্রয়োজনীয় স্পেস ও লাইন রিমুভাল</span></li>
+                    <li><i class="fas fa-check"></i> <span data-i18n="f7L2">অপ্রয়োজনীয় স্পেস রিমুভাল</span></li>
                     <li><i class="fas fa-check"></i> <span data-i18n="f7L3">এক ক্লিকে কাস্টম স্টাইল অ্যাপ্লাই</span></li>
+                    <li><i class="fas fa-check"></i> <span data-i18n="f7L4">ধারাবাহিক রিপ্লেস সুবিধা</span></li>
+                    <li><i class="fas fa-check"></i> <span data-i18n="f7L5">পেজ ব্রেক রিমুভার</span></li>
+                    <li><i class="fas fa-check"></i> <span data-i18n="f7L6">লাইন ব্রেক কনভার্টার</span></li>
                 </ul>
             </div>
 
             <div class="feature-card reveal" style="--delay: 0.4s;">
                 <div class="f-icon-wrap"><i class="fas fa-shield-halved"></i></div>
-                <h3 class="bangla-font" style="font-size: 1.2rem; margin-bottom: 1rem;" data-i18n="f8Title">ফাইল এক্সপোর্ট ও সিকিউরিটি</h3>
-                <ul class="f-list bangla-font">
+                <h3 class="atma-font" style="font-size: 1.3rem; margin-bottom: 1rem;" data-i18n="f8Title">ফাইল এক্সপোর্ট ও সিকিউরিটি</h3>
+                <ul class="f-list">
                     <li><i class="fas fa-check"></i> <span data-i18n="f8L1">সিলেক্টেড টেক্সট সরাসরি পিডিএফ</span></li>
                     <li><i class="fas fa-check"></i> <span data-i18n="f8L2">ওয়ান-ক্লিক পাসওয়ার্ড প্রোটেকশন</span></li>
                     <li><i class="fas fa-check"></i> <span data-i18n="f8L3">কাস্টম ওয়াটারমার্ক জেনারেটর</span></li>
@@ -412,33 +525,38 @@
 
         <section id="install" class="install-section">
             <div class="reveal" style="text-align: center; margin-bottom: 2.6rem; --delay: 0.1s;">
-                <h2 class="bangla-font" style="font-size: 2rem; color: var(--secondary);" data-i18n="installTitle">ইন্সটলেশন প্রসেস</h2>
+                <h2 style="font-size: 2.2rem; color: var(--secondary);" data-i18n="installTitle">ইন্সটলেশন প্রসেস</h2>
             </div>
             <div style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.3rem;">
                 <div class="step-card reveal" style="--delay: 0.2s;">
                     <div class="step-number">১</div>
-                    <i class="fas fa-file-zipper" style="font-size: 1.8rem; color: var(--primary); margin-bottom: 0.8rem;"></i>
-                    <h3 class="bangla-font" style="font-size: 1.1rem;" data-i18n="step1Title">আনজিপ করুন</h3>
-                    <p class="bangla-font" style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;" data-i18n="step1Desc">ডাউনলোড করা <strong>.zip</strong> ফাইলটি আনজিপ করে নিন।</p>
+                    <i class="fas fa-file-zipper" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                    <h3 class="atma-font" style="font-size: 1.2rem;" data-i18n="step1Title">আনজিপ করুন</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.5rem;" data-i18n="step1Desc">ডাউনলোড করা <strong>.zip</strong> ফাইলটি আনজিপ করে নিন।</p>
                 </div>
                 <div class="step-card reveal" style="--delay: 0.3s;">
                     <div class="step-number">২</div>
-                    <i class="fas fa-terminal" style="font-size: 1.8rem; color: var(--primary); margin-bottom: 0.8rem;"></i>
-                    <h3 class="bangla-font" style="font-size: 1.1rem;" data-i18n="step2Title">ইন্সটল করুন</h3>
-                    <p class="bangla-font" style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;" data-i18n="step2Desc">ফোল্ডার থেকে <strong>installer.bat</strong> ফাইলটি রান করুন।</p>
+                    <i class="fas fa-terminal" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                    <h3 class="atma-font" style="font-size: 1.2rem;" data-i18n="step2Title">ইন্সটল করুন</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.5rem;" data-i18n="step2Desc">ফোল্ডার থেকে <strong>installer.bat</strong> ফাইলটি রান করুন।</p>
                 </div>
                 <div class="step-card reveal" style="--delay: 0.4s;">
                     <div class="step-number">৩</div>
-                    <i class="fas fa-arrows-rotate" style="font-size: 1.8rem; color: var(--primary); margin-bottom: 0.8rem;"></i>
-                    <h3 class="bangla-font" style="font-size: 1.1rem;" data-i18n="step3Title">আপডেট করুন</h3>
-                    <p class="bangla-font" style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;" data-i18n="step3Desc">MS Word ওপেন করে <strong>AbidSuite</strong> আপডেট করে নিন।</p>
+                    <i class="fas fa-arrows-rotate" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                    <h3 class="atma-font" style="font-size: 1.2rem;" data-i18n="step3Title">আপডেট করুন</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.5rem;" data-i18n="step3Desc">MS Word ওপেন করে <strong class='abid-font'>AbidSuite</strong> আপডেট করে নিন।</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <a href="https://drive.google.com/uc?export=download&id=1ufrjQ1Ji3qEUDSbXX0W7xZguEFYedDpR" id="stickyDownload" class="btn-primary bangla-font" data-i18n="stickyDown">
-        <i class="fas fa-file-arrow-down"></i> <em>D o w n l o a d   N o w</em>
+    <a href="https://drive.google.com/uc?export=download&id=1ufrjQ1Ji3qEUDSbXX0W7xZguEFYedDpR" id="stickyDownload" class="btn-primary" data-i18n="stickyDown">
+        <i class="fas fa-file-arrow-down"></i> <em>এ খ ন ই    ডা ই ন লো ড    ক রু ন</em>
+    </a>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/8801925556787" class="whatsapp-float" target="_blank" title="Message us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
     </a>
 
     <button id="backToTop" class="back-to-top" title="Go to top">
@@ -446,105 +564,181 @@
     </button>
 
     <footer class="reveal" style="--delay: 0.1s;">
-        <span><i class="fas fa-cubes"></i> <b>AbidSuite</b></span>
+        <span><i class="fas fa-cubes" style="color: var(--primary); font-size: 1.2rem;"></i> <b><span class='abid-font' style="font-size: 1.2rem;">AbidSuite</span></b></span>
         <p style="margin: 0.5rem 0; color: var(--primary); font-weight: 600;" data-i18n="footerSlogan">বাংলা ভাষার ডিজিটাল উৎকর্ষতায় আপনার সঙ্গী।</p>
-        <p class="bangla-font" style="color: var(--text-muted);" data-i18n="footerCopyright">Copyright © ২০২৬ আবিদ আল জামী। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p style="color: var(--text-muted);" data-i18n="footerCopyright">Copyright © ২০২৬ আবিদ আল জামী। সর্বস্বত্ব সংরক্ষিত।</p>
     </footer>
 
     <script>
         // --- Translations Dictionary ---
         const translations = {
             bn: {
-                logoTitle: "AbidSuite",
-                navDownload: "<i>ডাইনলোড</i>",
-                navTheme: "Theme", themeLight: "লাইট", themeDark: "ডার্ক",
+                logoTitle: "<span class='abid-font'>AbidSuite</span>",
+                navDownload: "ডাউনলোড",
+                navTheme: "Theme", themeLight: "লাইট", themeDark: "ডার্ক", themeOcean: "ওশান", themeForest: "ফরেস্ট", themeSunset: "সানসেট", themeAmethyst: "অ্যামিথিস্ট",
                 heroBadge: "<i class='fas fa-shield-heart'></i> বাংলা ভাষার প্রসারে একটি ক্ষুদ্র প্রয়াস",
                 heroTitle: "ওয়ার্ড ডকুমেন্টে <br>কাজের গতি হবে <span style='color: var(--primary);'>দ্বিগুণ</span>",
-                heroDesc: "AbidSuite হলো Microsoft Word-এর জন্য একটি স্মার্ট এক্সটেনশন, যা আপনার বাংলা টাইপিং, ফরম্যাটিং এবং ডকুমেন্ট ক্লিনিংয়ের কাজকে করবে আরও সহজ ও প্রফেশনাল।",
-                btnDownload: "<i class='fas fa-file-arrow-down'></i> ডাউনলোড AbidSuite",
+                typePrefix: "আপনার কাজ হবে ",
+                heroDesc: "<span class='abid-font'>AbidSuite</span> হলো Microsoft Word-এর জন্য একটি স্মার্ট এক্সটেনশন, যা আপনার বাংলা টাইপিং, ফরম্যাটিং এবং ডকুমেন্ট ক্লিনিংয়ের কাজকে করবে আরও সহজ ও প্রফেশনাল।",
+                btnDownload: "<i class='fas fa-file-arrow-down'></i> ডাউনলোড <span class='abid-font'>AbidSuite</span>",
                 btnInstall: "<i class='fas fa-circle-play'></i> installation process দেখুন",
                 hc1Title: "বিজয় টু ইউনিকোড", hc1Desc: "সহজ ফন্ট রূপান্তর",
                 hc2Title: "অটো ক্যালকুলেশন", hc2Desc: "টেবিল রো/কলাম যোগফল",
                 hc3Title: "ডকুমেন্ট ক্লিনার", hc3Desc: "এক ক্লিকে ক্লিন আপ",
                 hc4Title: "বাংলা তারিখ", hc4Desc: "অটো বাংলা তারিখ",
                 hc5Title: "বাংলা সংখ্যা", hc5Desc: "সংখ্যা থেকে কথায়",
-                purposeQuote: "“আমাদের মাতৃভাষা বাংলাকে ডিজিটাল মাধ্যমে আরও প্রসারিত ও সমৃদ্ধ করার লক্ষ্যে <strong>AbidSuite</strong> তৈরি করা হয়েছে”",
+                purposeQuote: "“আমাদের মাতৃভাষা বাংলাকে ডিজিটাল মাধ্যমে আরও প্রসারিত ও সমৃদ্ধ করার লক্ষ্যে <strong class='abid-font' style='color:var(--primary-light);'>AbidSuite</strong> তৈরি করা হয়েছে”",
                 f1Title: "ভাষা ও লোকালাইজেশন", f1L1: "বিজয় ও ইউনিকোড কনভার্সন", f1L2: "বাংলা-ইংরেজি সংখ্যা পরিবর্তন", f1L3: "অটো বাংলা তারিখ ও সংখ্যা", f1L4: "স্মার্ট দাঁড়ি ও ফুলস্টপ সুইচ",
                 f2Title: "টেবিল ও ম্যাথ টুলস", f2L1: "কলাম ও রো এর ম্যাজিক সাম", f2L2: "টেবিল ট্রান্সপোজ সুবিধা", f2L3: "প্রফেশনাল টেবিল ফরম্যাটিং",
                 f3Title: "মিডিয়া ও এক্সট্র্যাকশন", f3L1: "এক ক্লিকে সব ছবি ফোল্ডারে সেভ", f3L2: "ডকুমেন্টের সব টেবিল আলাদা এক্সট্র্যাক্ট", f3L3: "অটোমেটিক টাইমস্ট্যাম্প ও অর্গানাইজেশন",
-                f4Title: "ম্যাথ ও নিউমেরিক টুলস", f4L1: "শর্টহ্যান্ড থেকে অ্যাডভান্সড EQ Field", f4L2: "রোমান ও ইংরেজি সংখ্যার অটো কনভার্সন", f4L3: "কমপ্লেক্স ইকুয়েশন রেন্ডারিং সাপোর্ট",
+                f4Title: "ম্যাথ ও নিউমেরিক টুলস", f4L1: "ভগ্নাংশ ও সুপারস্ক্রিপ্ট (Advanced EQ)", f4L2: "রোমান ও ইংরেজি সংখ্যার অটো কনভার্সন", f4L3: "কমপ্লেক্স ইকুয়েশন রেন্ডারিং সাপোর্ট",
                 f5Title: "অ্যাডভান্সড অটোমেশন", f5L1: "কাস্টম রিবন ও কুইক এক্সেস প্যানেল", f5L2: "মাল্টিপল ম্যাক্রো ইন্টিগ্রেশন", f5L3: "অটোমেটিক টেমপ্লেট ও এনভায়রনমেন্ট সেটআপ",
-                f6Title: "পাওয়ার ইউটিলিটি", f6L1: "কুইক QR Code জেনারেটর", f6L2: "ডকুমেন্ট টু ইমেজ এক্সপোর্ট", f6L3: "মাল্টি-পেস্ট ক্লিপবোর্ড",
-                f7Title: "অ্যাডভান্সড ফাইন্ড ও রিপ্লেস", f7L1: "বাংলা-ইংরেজি মিক্সড টেক্সট ফিক্স", f7L2: "অপ্রয়োজনীয় স্পেস ও লাইন রিমুভাল", f7L3: "এক ক্লিকে কাস্টম স্টাইল অ্যাপ্লাই",
+                f6Title: "পাওয়ার ইউটিলিটি", f6L1: "কুইক QR Code জেনারেটর", f6L2: "ডকুমেন্ট টু ইমেজ এক্সপোর্ট", f6L3: "মাল্টি-পেস্ট ক্লিপবোর্ড", f6L4: "টেক্সট থেকে বক্স", f6L5: "ফোন নম্বর ফরমেটার",
+                f7Title: "অ্যাডভান্সড ফাইন্ড ও রিপ্লেস", f7L1: "বাংলা-ইংরেজি মিক্সড টেক্সট ফিক্স", f7L2: "অপ্রয়োজনীয় স্পেস রিমুভাল", f7L3: "এক ক্লিকে কাস্টম স্টাইল অ্যাপ্লাই", f7L4: "ধারাবাহিক রিপ্লেস সুবিধা", f7L5: "পেজ ব্রেক রিমুভার", f7L6: "লাইন ব্রেক কনভার্টার",
                 f8Title: "ফাইল এক্সপোর্ট ও সিকিউরিটি", f8L1: "সিলেক্টেড টেক্সট সরাসরি পিডিএফ", f8L2: "ওয়ান-ক্লিক পাসওয়ার্ড প্রোটেকশন", f8L3: "কাস্টম ওয়াটারমার্ক জেনারেটর",
                 installTitle: "ইন্সটলেশন প্রসেস",
                 step1Title: "আনজিপ করুন", step1Desc: "ডাউনলোড করা <strong>.zip</strong> ফাইলটি আনজিপ করে নিন।",
                 step2Title: "ইন্সটল করুন", step2Desc: "ফোল্ডার থেকে <strong>installer.bat</strong> ফাইলটি রান করুন।",
-                step3Title: "আপডেট করুন", step3Desc: "MS Word ওপেন করে <strong>AbidSuite</strong> আপডেট করে নিন।",
-                stickyDown: "&nbsp; <i class='fas fa-file-arrow-down'></i> <em>এ খ ন ই &nbsp;&nbsp; ডা ই ন লো ড &nbsp;&nbsp; ক রু ন</em>",
+                step3Title: "আপডেট করুন", step3Desc: "MS Word ওপেন করে <strong class='abid-font'>AbidSuite</strong> আপডেট করে নিন।",
+                stickyDown: "  <i class='fas fa-file-arrow-down'></i> <em style='font-family: Atma, cursive;'>এ খ ন ই    ডা ই ন লো ড    ক রু ন</em>",
                 footerSlogan: "বাংলা ভাষার ডিজিটাল উৎকর্ষতায় আপনার সঙ্গী।", footerCopyright: "Copyright © ২০২৬ আবিদ আল জামী। সর্বস্বত্ব সংরক্ষিত।"
             },
             en: {
-                logoTitle: "AbidSuite",
-                navDownload: "<i>Download</i>",
-                navTheme: "Theme", themeLight: "Light", themeDark: "Dark",
+                logoTitle: "<span class='abid-font'>AbidSuite</span>",
+                navDownload: "Download",
+                navTheme: "Theme", themeLight: "Light", themeDark: "Dark", themeOcean: "Ocean", themeForest: "Forest", themeSunset: "Sunset", themeAmethyst: "Amethyst",
                 heroBadge: "<i class='fas fa-shield-heart'></i> A small effort to promote the Bengali language",
                 heroTitle: "Work speed in Word documents will <span style='color: var(--primary);'>double</span>",
-                heroDesc: "AbidSuite is a smart extension for Microsoft Word that makes your Bengali typing, formatting, and document cleaning easier and more professional.",
-                btnDownload: "<i class='fas fa-file-arrow-down'></i> Download AbidSuite",
+                typePrefix: "Your workflow will be ",
+                heroDesc: "<span class='abid-font'>AbidSuite</span> is a smart extension for Microsoft Word that makes your Bengali typing, formatting, and document cleaning easier and more professional.",
+                btnDownload: "<i class='fas fa-file-arrow-down'></i> Download <span class='abid-font'>AbidSuite</span>",
                 btnInstall: "<i class='fas fa-circle-play'></i> View installation process",
                 hc1Title: "Bijoy to Unicode", hc1Desc: "Easy font conversion",
                 hc2Title: "Auto Calculation", hc2Desc: "Table row/column sum",
                 hc3Title: "Document Cleaner", hc3Desc: "One-click clean up",
                 hc4Title: "Bengali Date", hc4Desc: "Auto Bengali date",
                 hc5Title: "Bengali Numbers", hc5Desc: "Number to words",
-                purposeQuote: "“AbidSuite was created to further expand and enrich our mother tongue Bengali in the digital medium.”",
+                purposeQuote: "“<strong class='abid-font' style='color:var(--primary-light);'>AbidSuite</strong> was created to further expand and enrich our mother tongue Bengali in the digital medium.”",
                 f1Title: "Language & Localization", f1L1: "Bijoy & Unicode conversion", f1L2: "Bengali-English number swap", f1L3: "Auto Bengali date & number", f1L4: "Smart Dari & Fullstop switch",
                 f2Title: "Table & Math Tools", f2L1: "Magic sum of columns & rows", f2L2: "Table transpose feature", f2L3: "Professional table formatting",
                 f3Title: "Media & Extraction", f3L1: "One-click save all images to folder", f3L2: "Extract all tables separately", f3L3: "Automatic timestamp & organization",
-                f4Title: "Math & Numeric Tools", f4L1: "Shorthand to Advanced EQ Field", f4L2: "Auto conversion of Roman & English numbers", f4L3: "Complex equation rendering support",
+                f4Title: "Math & Numeric Tools", f4L1: "Fractions & Superscript (Advanced EQ)", f4L2: "Auto conversion of Roman & English numbers", f4L3: "Complex equation rendering support",
                 f5Title: "Advanced Automation", f5L1: "Custom ribbon & quick access panel", f5L2: "Multiple macro integration", f5L3: "Automatic template & environment setup",
-                f6Title: "Power Utility", f6L1: "Quick QR Code generator", f6L2: "Document to Image export", f6L3: "Multi-paste clipboard",
-                f7Title: "Advanced Find & Replace", f7L1: "Bengali-English mixed text fix", f7L2: "Unnecessary space & line removal", f7L3: "One-click custom style apply",
+                f6Title: "Power Utility", f6L1: "Quick QR Code generator", f6L2: "Document to Image export", f6L3: "Multi-paste clipboard", f6L4: "Text to Box", f6L5: "Phone Number Formatter",
+                f7Title: "Advanced Find & Replace", f7L1: "Bengali-English mixed text fix", f7L2: "Unnecessary space removal", f7L3: "One-click custom style apply", f7L4: "Sequential replace feature", f7L5: "Page break remover", f7L6: "Line break converter",
                 f8Title: "File Export & Security", f8L1: "Selected text direct to PDF", f8L2: "One-click password protection", f8L3: "Custom watermark generator",
                 installTitle: "Installation Process",
                 step1Title: "Unzip", step1Desc: "Unzip the downloaded <strong>.zip</strong> file.",
                 step2Title: "Install", step2Desc: "Run the <strong>installer.bat</strong> file from the folder.",
-                step3Title: "Update", step3Desc: "Open MS Word and update <strong>AbidSuite</strong>.",
-                stickyDown: "&nbsp; <i class='fas fa-file-arrow-down'></i> <em>d o w n l o a d &nbsp; n o w</em>",
+                step3Title: "Update", step3Desc: "Open MS Word and update <strong class='abid-font'>AbidSuite</strong>.",
+                stickyDown: "  <i class='fas fa-file-arrow-down'></i> <em>d o w n l o a d   n o w</em>",
                 footerSlogan: "Your companion in the digital excellence of the Bengali language.", footerCopyright: "Copyright © 2026 Abid Al Jami. All rights reserved."
             },
             hi: {
-                logoTitle: "AbidSuite",
-                navDownload: "<i>डाउनलोड</i>",
-                navTheme: "Theme", themeLight: "लाइट", themeDark: "डार्क",
+                logoTitle: "<span class='abid-font'>AbidSuite</span>",
+                navDownload: "डाउनलोड",
+                navTheme: "Theme", themeLight: "लाइट", themeDark: "डार्क", themeOcean: "सागर", themeForest: "जंगल", themeSunset: "सूर्यास्त", themeAmethyst: "नीलम",
                 heroBadge: "<i class='fas fa-shield-heart'></i> बंगाली भाषा को बढ़ावा देने का एक छोटा सा प्रयास",
                 heroTitle: "वर्ड डॉक्यूमेंट में काम की गति <span style='color: var(--primary);'>दोगुनी</span> हो जाएगी",
-                heroDesc: "AbidSuite Microsoft Word के लिए एक स्मार्ट एक्सटेंशन है, जो आपकी बंगाली टाइपिंग, फ़ॉर्मेटिंग और दस्तावेज़ सफ़ाई को आसान और अधिक पेशेवर बना देगा।",
-                btnDownload: "<i class='fas fa-file-arrow-down'></i> AbidSuite डाउनलोड करें",
+                typePrefix: "आपका काम होगा ",
+                heroDesc: "<span class='abid-font'>AbidSuite</span> Microsoft Word के लिए एक स्मार्ट एक्सटेंशन है, जो आपकी बंगाली टाइपिंग, फ़ॉर्मेटिंग और दस्तावेज़ सफ़ाई को आसान और अधिक पेशेवर बना देगा।",
+                btnDownload: "<i class='fas fa-file-arrow-down'></i> <span class='abid-font'>AbidSuite</span> डाउनलोड करें",
                 btnInstall: "<i class='fas fa-circle-play'></i> इंस्टॉलेशन प्रक्रिया देखें",
                 hc1Title: "विजय से यूनिकोड", hc1Desc: "आसान फ़ॉन्ट रूपांतरण",
                 hc2Title: "स्वतः गणना", hc2Desc: "टेबल पंक्ति/कॉलम योग",
                 hc3Title: "दस्तावेज़ क्लीनर", hc3Desc: "एक-क्लिक क्लीन अप",
                 hc4Title: "बंगाली तारीख", hc4Desc: "स्वतः बंगाली तारीख",
                 hc5Title: "बंगाली संख्याएँ", hc5Desc: "संख्या से शब्द",
-                purposeQuote: "“AbidSuite को डिजिटल माध्यम में हमारी मातृभाषा बंगाली का और अधिक विस्तार और समृद्ध करने के लिए बनाया गया है।”",
+                purposeQuote: "“<strong class='abid-font' style='color:var(--primary-light);'>AbidSuite</strong> को डिजिटल माध्यम में हमारी मातृभाषा बंगाली का और अधिक विस्तार और समृद्ध करने के लिए बनाया गया है।”",
                 f1Title: "भाषा और स्थानीयकरण", f1L1: "विजय और यूनिकोड रूपांतरण", f1L2: "बंगाली-अंग्रेजी संख्या स्वैप", f1L3: "स्वतः बंगाली तारीख और संख्या", f1L4: "स्मार्ट दाड़ी और फुलस्टॉप स्विच",
                 f2Title: "टेबल और गणित उपकरण", f2L1: "कॉलम और पंक्तियों का जादुई योग", f2L2: "टेबल ट्रांसपोज़ सुविधा", f2L3: "पेशेवर टेबल फ़ॉर्मेटिंग",
                 f3Title: "मीडिया और निष्कर्षण", f3L1: "एक-क्लिक में सभी चित्र फ़ोल्डर में सहेजें", f3L2: "सभी टेबल अलग से निकालें", f3L3: "स्वचालित टाइमस्टैम्प और संगठन",
-                f4Title: "गणित और संख्यात्मक उपकरण", f4L1: "शॉर्टहैंड से उन्नत EQ फ़ील्ड", f4L2: "रोमन और अंग्रेजी संख्याओं का स्वतः रूपांतरण", f4L3: "जटिल समीकरण रेंडरिंग समर्थन",
+                f4Title: "गणित और संख्यात्मक उपकरण", f4L1: "अंश और सुपरस्क्रिप्ट (Advanced EQ)", f4L2: "रोमन और अंग्रेजी संख्याओं का स्वतः रूपांतरण", f4L3: "जटिल समीकरण रेंडरिंग समर्थन",
                 f5Title: "उन्नत स्वचालन", f5L1: "कस्टम रिबन और त्वरित पहुँच पैनल", f5L2: "एकाधिक मैक्रो एकीकरण", f5L3: "स्वचालित टेम्पलेट और पर्यावरण सेटअप",
-                f6Title: "पावर यूटिलिटी", f6L1: "त्वरित QR कोड जनरेटर", f6L2: "दस्तावेज़ से छवि निर्यात", f6L3: "मल्टी-पेस्ट क्लिपबोर्ड",
-                f7Title: "उन्नत खोज और बदलें", f7L1: "बंगाली-अंग्रेजी मिश्रित पाठ सुधार", f7L2: "अनावश्यक स्थान और लाइन हटाना", f7L3: "एक-क्लिक कस्टम शैली लागू करें",
+                f6Title: "पावर यूटिलिटी", f6L1: "त्वरित QR कोड जनरेटर", f6L2: "दस्तावेज़ से छवि निर्यात", f6L3: "मल्टी-पेस्ट क्लिपबोर्ड", f6L4: "टेक्स्ट से बॉक्स", f6L5: "फ़ोन नंबर फ़ॉर्मेटर",
+                f7Title: "उन्नत खोज और बदलें", f7L1: "बंगाली-अंग्रेजी मिश्रित पाठ सुधार", f7L2: "अनावश्यक स्थान हटाना", f7L3: "एक-क्लिक कस्टम शैली लागू करें", f7L4: "अनुक्रमिक प्रतिस्थापन सुविधा", f7L5: "पेज ब्रेक रिमूवर", f7L6: "लाइन ब्रेक कनवर्टर",
                 f8Title: "फ़ाइल निर्यात और सुरक्षा", f8L1: "चयनित पाठ सीधे PDF में", f8L2: "एक-क्लिक पासवर्ड सुरक्षा", f8L3: "कस्टम वॉटरमार्क जनरेटर",
                 installTitle: "स्थापना प्रक्रिया",
                 step1Title: "अनज़िप करें", step1Desc: "डाउनलोड की गई <strong>.zip</strong> फ़ाइल को अनज़िप करें।",
                 step2Title: "इंस्टॉल करें", step2Desc: "फ़ोल्डर से <strong>installer.bat</strong> फ़ाइल चलाएँ।",
-                step3Title: "अपडेट करें", step3Desc: "MS Word खोलें और <strong>AbidSuite</strong> को अपडेट करें।",
-                stickyDown: "&nbsp; <i class='fas fa-file-arrow-down'></i> <em>अ भी &nbsp;&nbsp; डा उ न लो ड &nbsp;&nbsp; क रें</em>",
+                step3Title: "अपडेट करें", step3Desc: "MS Word खोलें और <strong class='abid-font'>AbidSuite</strong> को अपडेट करें।",
+                stickyDown: "  <i class='fas fa-file-arrow-down'></i> <em>अ भी    डा उ न लो ड    क रें</em>",
                 footerSlogan: "बंगाली भाषा की डिजिटल उत्कृष्टता में आपका साथी।", footerCopyright: "कॉपीराइट © 2026 आबिद अल जामी। सर्वाधिकार सुरक्षित।"
+            },
+            ar: {
+                logoTitle: "<span class='abid-font'>AbidSuite</span>",
+                navDownload: "تنزيل",
+                navTheme: "المظهر", themeLight: "فاتح", themeDark: "داكن", themeOcean: "محيط", themeForest: "غابة", themeSunset: "غروب", themeAmethyst: "جمشت",
+                heroBadge: "<i class='fas fa-shield-heart'></i> جهد صغير لتعزيز اللغة البنغالية",
+                heroTitle: "سرعة العمل في مستندات Word <span style='color: var(--primary);'>ستتضاعف</span>",
+                typePrefix: "سيكون عملك ",
+                heroDesc: "<span class='abid-font'>AbidSuite</span> هو امتداد ذكي لـ Microsoft Word، يجعل الكتابة والتنسيق وتنظيف المستندات أسهل وأكثر احترافية.",
+                btnDownload: "<i class='fas fa-file-arrow-down'></i> تنزيل <span class='abid-font'>AbidSuite</span>",
+                btnInstall: "<i class='fas fa-circle-play'></i> عرض عملية التثبيت",
+                hc1Title: "بيجوي إلى يونيكود", hc1Desc: "تحويل الخطوط بسهولة",
+                hc2Title: "حساب تلقائي", hc2Desc: "مجموع صف/عمود الجدول",
+                hc3Title: "منظف المستندات", hc3Desc: "تنظيف بنقرة واحدة",
+                hc4Title: "التاريخ البنغالي", hc4Desc: "تاريخ بنغالي تلقائي",
+                hc5Title: "الأرقام البنغالية", hc5Desc: "من أرقام إلى كلمات",
+                purposeQuote: "“تم إنشاء <strong class='abid-font' style='color:var(--primary-light);'>AbidSuite</strong> لتوسيع وإثراء لغتنا الأم البنغالية في الوسائط الرقمية.”",
+                f1Title: "اللغة والتعريب", f1L1: "تحويل بيجوي ويونيكود", f1L2: "تبديل الأرقام بين البنغالية والإنجليزية", f1L3: "تاريخ ورقم بنغالي تلقائي", f1L4: "تبديل ذكي للفاصلة والنقطة",
+                f2Title: "الجدول وأدوات الرياضيات", f2L1: "المجموع السحري للأعمدة والصفوف", f2L2: "ميزة تبديل الجدول", f2L3: "تنسيق احترافي للجدول",
+                f3Title: "الوسائط والاستخراج", f3L1: "حفظ جميع الصور في مجلد بنقرة واحدة", f3L2: "استخراج جميع الجداول بشكل منفصل", f3L3: "طابع زمني وتنظيم تلقائي",
+                f4Title: "الرياضيات والأدوات الرقمية", f4L1: "الكسور والأرقام العلوية (EQ المتقدم)", f4L2: "التحويل التلقائي للأرقام الرومانية والإنجليزية", f4L3: "دعم عرض المعادلات المعقدة",
+                f5Title: "أتمتة متقدمة", f5L1: "شريط مخصص ولوحة وصول سريع", f5L2: "تكامل ماكرو متعدد", f5L3: "إعداد القالب والبيئة تلقائيًا",
+                f6Title: "أدوات الطاقة", f6L1: "منشئ رمز الاستجابة السريعة (QR)", f6L2: "تصدير المستند إلى صورة", f6L3: "حافظة متعددة اللصق", f6L4: "نص إلى مربع", f6L5: "منسق رقم الهاتف",
+                f7Title: "بحث واستبدال متقدم", f7L1: "إصلاح النص المختلط البنغالي-الإنجليزي", f7L2: "إزالة المسافات غير الضرورية", f7L3: "تطبيق النمط المخصص بنقرة واحدة", f7L4: "ميزة الاستبدال المتسلسل", f7L5: "مزيل فواصل الصفحات", f7L6: "محول فواصل الأسطر",
+                f8Title: "تصدير الملفات والأمان", f8L1: "النص المحدد مباشرة إلى PDF", f8L2: "حماية بكلمة مرور بنقرة واحدة", f8L3: "منشئ علامة مائية مخصصة",
+                installTitle: "عملية التثبيت",
+                step1Title: "فك الضغط", step1Desc: "قم بفك ضغط ملف <strong>.zip</strong> الذي تم تنزيله.",
+                step2Title: "تثبيت", step2Desc: "قم بتشغيل ملف <strong>installer.bat</strong> من المجلد.",
+                step3Title: "تحديث", step3Desc: "افتح MS Word وقم بتحديث <strong class='abid-font'>AbidSuite</strong>.",
+                stickyDown: "  <i class='fas fa-file-arrow-down'></i> <em>ق م   ب ا ل ت ن ز ي ل   ا ل آ ن</em>",
+                footerSlogan: "رفيقك في التميز الرقمي للغة البنغالية.", footerCopyright: "حقوق الطبع والنشر © 2026 Abid Al Jami. جميع الحقوق محفوظة."
             }
         };
+
+        // --- Typing Effect Logic ---
+        const typingWords = {
+            bn: ["স্মার্ট", "নির্ভুল", "দ্রুত", "প্রফেশনাল"],
+            en: ["Smart", "Accurate", "Fast", "Professional"],
+            hi: ["स्मार्ट", "सटीक", "तेज़", "पेशेवर"],
+            ar: ["ذكي", "دقيق", "سريع", "احترافي"]
+        };
+        let typeIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let currentLangGlob = 'bn';
+        const typingTextEl = document.getElementById("typing-text");
+        let typeTimeout;
+
+        function typeEffect() {
+            const words = typingWords[currentLangGlob];
+            if (!words) return;
+            const currentWord = words[typeIndex];
+
+            if (isDeleting) {
+                charIndex--;
+            } else {
+                charIndex++;
+            }
+
+            typingTextEl.textContent = currentWord.substring(0, charIndex);
+
+            let typeSpeed = isDeleting ? 40 : 100;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 2000; // Pause at end of word
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                typeIndex = (typeIndex + 1) % words.length;
+                typeSpeed = 400; // Pause before typing next
+            }
+
+            clearTimeout(typeTimeout);
+            typeTimeout = setTimeout(typeEffect, typeSpeed);
+        }
 
         // --- Toggle Logic for Dropdowns ---
         const langBtn = document.getElementById('langBtn');
@@ -575,51 +769,74 @@
 
         // --- Theme System ---
         function setTheme(theme) {
-            document.querySelectorAll('[data-theme]').forEach(el => el.classList.remove('active'));
-            document.querySelector(`[data-theme="${theme}"]`).classList.add('active');
+            document.querySelectorAll('.dropdown-item[data-theme]').forEach(el => el.classList.remove('active'));
+            let activeEl = document.querySelector(`.dropdown-item[data-theme="${theme}"]`);
+            if(activeEl) activeEl.classList.add('active');
             
-            if (theme === 'dark') {
-                document.body.classList.add('dark-mode');
-                document.getElementById('themeIcon').className = 'fas fa-moon';
-            } else {
-                document.body.classList.remove('dark-mode');
-                document.getElementById('themeIcon').className = 'fas fa-sun';
-            }
+            document.body.setAttribute('data-theme', theme);
+
+            // Icon Mapping
+            const iconMap = {
+                'light': 'fa-sun',
+                'dark': 'fa-moon',
+                'ocean': 'fa-water',
+                'forest': 'fa-leaf',
+                'sunset': 'fa-fire',
+                'amethyst': 'fa-gem'
+            };
+            document.getElementById('themeIcon').className = `fas ${iconMap[theme] || 'fa-palette'}`;
+            
             themePopup.classList.remove('show');
             localStorage.setItem('abidsuite-theme', theme);
         }
 
-        document.querySelectorAll('[data-theme]').forEach(item => {
+        document.querySelectorAll('.dropdown-item[data-theme]').forEach(item => {
             item.addEventListener('click', (e) => setTheme(e.currentTarget.getAttribute('data-theme')));
         });
 
-        // --- Language System ---
+        // --- Language & Localization System ---
         function setLanguage(lang) {
-            document.querySelectorAll('[data-lang]').forEach(el => el.classList.remove('active'));
-            document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+            currentLangGlob = lang;
+            document.querySelectorAll('.dropdown-item[data-lang]').forEach(el => el.classList.remove('active'));
+            document.querySelector(`.dropdown-item[data-lang="${lang}"]`).classList.add('active');
+            
+            // RTL Logic
+            if (lang === 'ar') {
+                document.documentElement.dir = 'rtl';
+            } else {
+                document.documentElement.dir = 'ltr';
+            }
+            document.documentElement.lang = lang; 
             
             // Update button label
-            const currentLangLabel = { bn: 'বাংলা', en: 'English', hi: 'हिन्दी' };
+            const currentLangLabel = { bn: 'বাংলা', en: 'English', hi: 'हिन्दी', ar: 'العربية' };
             document.getElementById('currentLangText').innerText = currentLangLabel[lang];
             
             // Translate elements
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                if(translations[lang][key]) {
+                if(translations[lang] && translations[lang][key]) {
                     el.innerHTML = translations[lang][key];
                 }
             });
             
+            // Restart typing effect on language change
+            charIndex = 0;
+            isDeleting = false;
+            typeIndex = 0;
+            clearTimeout(typeTimeout);
+            typeEffect();
+
             langPopup.classList.remove('show');
             localStorage.setItem('abidsuite-lang', lang);
         }
 
-        document.querySelectorAll('[data-lang]').forEach(item => {
+        document.querySelectorAll('.dropdown-item[data-lang]').forEach(item => {
             item.addEventListener('click', (e) => setLanguage(e.currentTarget.getAttribute('data-lang')));
         });
 
         // Initialize preferences on load
-        const savedTheme = localStorage.getItem('abidsuite-theme') || 'light';
+        const savedTheme = localStorage.getItem('abidsuite-theme') || 'dark';
         setTheme(savedTheme);
         const savedLang = localStorage.getItem('abidsuite-lang') || 'bn';
         setLanguage(savedLang);
