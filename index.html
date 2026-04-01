@@ -19,7 +19,7 @@
     <style>
         /* Base Variables (Fallback/Light Mode) */
         :root, body[data-theme="light"] {
-            --base-font-size: 0.9rem; 
+            --base-font-size: 1rem; 
             --primary: #059669;
             --primary-light: #10b981;
             --primary-glow: rgba(16, 185, 129, 0.15);
@@ -176,13 +176,13 @@
 
         /* ----- Navigation & Custom Dropdowns ----- */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 3%; position: fixed; top: 0; width: 100%; background: var(--nav-bg); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid var(--border-light); z-index: 1000; transition: background 0.4s, border-color 0.4s; }
-        .logo { font-size: 1.2rem; font-weight: 700; color: var(--secondary); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: 0.3s; }
+        .logo { font-size: 1.2rem; font-weight: 700; color: var(--secondary); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: 0.5s; }
         .logo:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary-glow-strong); }
         .logo i { color: var(--primary); font-size: 1.4rem; }
         
-        .nav-controls { display: flex; align-items: center; gap: 1rem; }
+        .nav-controls { display: flex; align-items: center; gap: 0.3rem; }
 
-        .btn-nav { background: var(--btn-nav-bg); color: #fff; padding: 0.5rem 1.3rem; border-radius: 100px; text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: 0.3s; position: relative; overflow: hidden;}
+        .btn-nav { background: var(--btn-nav-bg); color: #fff; padding: 0.3rem 1rem; border-radius: 100px; text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: 0.3s; position: relative; overflow: hidden;}
         .btn-nav:hover { transform: translateY(-2px); box-shadow: 0 5px 15px var(--primary-glow-strong); color: #fff; }
 
         /* Dropdown Styling */
