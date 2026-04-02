@@ -262,6 +262,12 @@
         .hc-text h4 { font-size: 1.05rem; color: var(--secondary); margin-bottom: 2px; }
         .hc-text p { font-size: 0.85rem; color: var(--text-muted); }
 
+        /* ----- Video Section ----- */
+        .video-section { max-width: 1000px; margin: 0 auto 5rem; padding: 0 5%; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 1.3rem; overflow: hidden; box-shadow: var(--popup-shadow); border: 1px solid var(--border-light); transition: box-shadow 0.4s, border-color 0.4s; background: var(--bg-card); }
+        .video-wrapper:hover { box-shadow: 0 0 30px var(--primary-glow-strong); border-color: var(--primary-light); }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
         /* ----- Purpose Banner ----- */
         .purpose-banner { background: var(--purpose-bg); margin-bottom: 5rem; padding: 4.5rem 5%; text-align: center; transition: background 0.4s; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); position: relative; overflow: hidden; }
         .purpose-banner::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%); pointer-events: none; }
@@ -428,6 +434,16 @@
             </div>
         </section>
 
+        <!-- New Video Section Added Here -->
+        <section class="video-section" id="tutorial">
+            <div class="reveal" style="text-align: center; margin-bottom: 2.6rem; --delay: 0.1s;">
+                <h2 class="atma-font" style="font-size: 2.2rem; color: var(--secondary);" data-i18n="videoTitle">কীভাবে কাজ করে?</h2>
+            </div>
+            <div class="video-wrapper reveal" style="--delay: 0.2s;">
+                <iframe src="https://www.youtube.com/embed/CizqHHJ8QPg" title="AbidSuite Video Tutorial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </section>
+
         <section class="purpose-banner reveal" style="--delay: 0.1s;">
             <div class="purpose-content">
                 <i class="fas fa-quote-left" style="color: var(--primary-light); font-size: 1.8rem; margin-bottom: 1rem; display: block; filter: drop-shadow(0 0 10px var(--primary-glow-strong));"></i>
@@ -529,19 +545,19 @@
             </div>
             <div style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.3rem;">
                 <div class="step-card reveal" style="--delay: 0.2s;">
-                    <div class="step-number">১</div>
+                    <div class="step-number">1</div>
                     <i class="fas fa-file-zipper" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
                     <h3 class="atma-font" style="font-size: 1.2rem;" data-i18n="step1Title">আনজিপ করুন</h3>
                     <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.5rem;" data-i18n="step1Desc">ডাউনলোড করা <strong>.zip</strong> ফাইলটি আনজিপ করে নিন।</p>
                 </div>
                 <div class="step-card reveal" style="--delay: 0.3s;">
-                    <div class="step-number">২</div>
+                    <div class="step-number">2</div>
                     <i class="fas fa-terminal" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
                     <h3 class="atma-font" style="font-size: 1.2rem;" data-i18n="step2Title">ইন্সটল করুন</h3>
                     <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.5rem;" data-i18n="step2Desc">ফোল্ডার থেকে <strong>installer.bat</strong> ফাইলটি রান করুন।</p>
                 </div>
                 <div class="step-card reveal" style="--delay: 0.4s;">
-                    <div class="step-number">৩</div>
+                    <div class="step-number">3</div>
                     <i class="fas fa-arrows-rotate" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
                     <h3 class="atma-font" style="font-size: 1.2rem;" data-i18n="step3Title">আপডেট করুন</h3>
                     <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.5rem;" data-i18n="step3Desc">MS Word ওপেন করে <strong class='abid-font'>AbidSuite</strong> আপডেট করে নিন।</p>
@@ -582,6 +598,7 @@
                 heroDesc: "<span class='abid-font'>AbidSuite</span> হলো Microsoft Word-এর জন্য একটি স্মার্ট এক্সটেনশন, যা আপনার বাংলা টাইপিং, ফরম্যাটিং এবং ডকুমেন্ট ক্লিনিংয়ের কাজকে করবে আরও সহজ ও প্রফেশনাল।",
                 btnDownload: "<i class='fas fa-file-arrow-down'></i> ডাউনলোড <span class='abid-font'>AbidSuite</span>",
                 btnInstall: "<i class='fas fa-circle-play'></i> installation process দেখুন",
+                videoTitle: "কীভাবে কাজ করে?",
                 hc1Title: "বিজয় টু ইউনিকোড", hc1Desc: "সহজ ফন্ট রূপান্তর",
                 hc2Title: "অটো ক্যালকুলেশন", hc2Desc: "টেবিল রো/কলাম যোগফল",
                 hc3Title: "ডকুমেন্ট ক্লিনার", hc3Desc: "এক ক্লিকে ক্লিন আপ",
@@ -613,6 +630,7 @@
                 heroDesc: "<span class='abid-font'>AbidSuite</span> is a smart extension for Microsoft Word that makes your Bengali typing, formatting, and document cleaning easier and more professional.",
                 btnDownload: "<i class='fas fa-file-arrow-down'></i> Download <span class='abid-font'>AbidSuite</span>",
                 btnInstall: "<i class='fas fa-circle-play'></i> View installation process",
+                videoTitle: "See it in Action",
                 hc1Title: "Bijoy to Unicode", hc1Desc: "Easy font conversion",
                 hc2Title: "Auto Calculation", hc2Desc: "Table row/column sum",
                 hc3Title: "Document Cleaner", hc3Desc: "One-click clean up",
@@ -644,6 +662,7 @@
                 heroDesc: "<span class='abid-font'>AbidSuite</span> Microsoft Word के लिए एक स्मार्ट एक्सटेंशन है, जो आपकी बंगाली टाइपिंग, फ़ॉर्मेटिंग और दस्तावेज़ सफ़ाई को आसान और अधिक पेशेवर बना देगा।",
                 btnDownload: "<i class='fas fa-file-arrow-down'></i> <span class='abid-font'>AbidSuite</span> डाउनलोड करें",
                 btnInstall: "<i class='fas fa-circle-play'></i> इंस्टॉलेशन प्रक्रिया देखें",
+                videoTitle: "यह कैसे काम करता है?",
                 hc1Title: "विजय से यूनिकोड", hc1Desc: "आसान फ़ॉन्ट रूपांतरण",
                 hc2Title: "स्वतः गणना", hc2Desc: "टेबल पंक्ति/कॉलम योग",
                 hc3Title: "दस्तावेज़ क्लीनर", hc3Desc: "एक-क्लिक क्लीन अप",
@@ -675,6 +694,7 @@
                 heroDesc: "<span class='abid-font'>AbidSuite</span> هو امتداد ذكي لـ Microsoft Word، يجعل الكتابة والتنسيق وتنظيف المستندات أسهل وأكثر احترافية.",
                 btnDownload: "<i class='fas fa-file-arrow-down'></i> تنزيل <span class='abid-font'>AbidSuite</span>",
                 btnInstall: "<i class='fas fa-circle-play'></i> عرض عملية التثبيت",
+                videoTitle: "كيف يعمل؟",
                 hc1Title: "بيجوي إلى يونيكود", hc1Desc: "تحويل الخطوط بسهولة",
                 hc2Title: "حساب تلقائي", hc2Desc: "مجموع صف/عمود الجدول",
                 hc3Title: "منظف المستندات", hc3Desc: "تنظيف بنقرة واحدة",
