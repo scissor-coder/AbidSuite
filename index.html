@@ -147,6 +147,7 @@
         html[dir="rtl"] nav, html[dir="rtl"] .nav-controls, html[dir="rtl"] .logo { flex-direction: row; }
         html[dir="rtl"] .hero, html[dir="rtl"] .purpose-banner { text-align: right; }
         html[dir="rtl"] .hero-actions { justify-content: flex-start; }
+        html[dir="rtl"] .hero-links-group { align-items: flex-start; }
         html[dir="rtl"] .highlight-card, html[dir="rtl"] .feature-card, html[dir="rtl"] .hc-text, html[dir="rtl"] .f-list li { text-align: right; }
         html[dir="rtl"] .f-list li { justify-content: flex-start; padding-right: 0; }
         html[dir="rtl"] .dropdown-popup { right: auto; left: 0; }
@@ -247,8 +248,24 @@
         @keyframes glowPulse { 0% { transform: scale(0.9); } 50% { transform: scale(1.1); } 100% { transform: scale(0.9); } }
         .btn-primary:hover { transform: translateY(-4px); box-shadow: 0 1rem 2.5rem -0.5rem rgba(5, 150, 105, 0.6); color: white;}
 
-        .link-install { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 0.3rem; border-bottom: 1px dashed var(--primary); padding-bottom: 2px; transition: 0.3s; }
+        /* Hero Links Group (New Additions) */
+        .hero-links-group { display: flex; flex-direction: column; gap: 0.6rem; align-items: flex-start; }
+        
+        .link-install { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 0.3rem; border-bottom: 1px dashed var(--primary); padding-bottom: 2px; transition: 0.3s; margin-bottom: 0.3rem;}
         .link-install:hover { color: var(--text-main); border-color: var(--text-main); text-shadow: 0 0 8px var(--primary-glow-strong); }
+
+        .link-highlight { color: var(--text-main); text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.8rem; background: var(--bg-card); border-radius: 0.5rem; border: 1px solid var(--border-light); transition: all 0.3s ease; box-shadow: var(--popup-shadow); cursor: pointer; }
+        .link-highlight i { color: var(--primary); }
+        .link-highlight:hover { background: var(--primary-glow); border-color: var(--primary); transform: translateY(-2px); }
+        
+        .guide-link { background: linear-gradient(135deg, var(--primary-glow), transparent); border-color: var(--primary-light); color: var(--text-main); }
+        .guide-link i { color: var(--primary-light); }
+        .guide-link:hover { box-shadow: 0 0 15px var(--primary-glow-strong); }
+
+        /* Compatibility Badge Highlight */
+        .compatibility-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(15, 23, 42, 0.05); color: var(--text-muted); padding: 0.4rem 1rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; border: 1px solid var(--border-light); margin-top: 1.5rem; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); }
+        body[data-theme="dark"] .compatibility-badge, body[data-theme="ocean"] .compatibility-badge, body[data-theme="forest"] .compatibility-badge, body[data-theme="sunset"] .compatibility-badge, body[data-theme="amethyst"] .compatibility-badge { background: rgba(255, 255, 255, 0.05); }
+        .compatibility-badge i { color: #00a4ef; font-size: 1.1rem; }
 
         .hero-img { width: 100%; border-radius: 1.6rem; box-shadow: var(--img-shadow); opacity: var(--img-opacity); animation: floatImage 4s ease-in-out infinite; transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease; cursor: pointer; position: relative; z-index: 2; border: 1px solid var(--border-light); }
         .hero-img:hover { transform: scale(1.02) translateY(-5px); box-shadow: var(--img-shadow-hover); filter: drop-shadow(0 0 30px var(--primary-glow-strong)); animation-play-state: paused; }
@@ -290,6 +307,28 @@
         .step-card:hover { border-color: var(--primary-light); box-shadow: 0 0 25px var(--primary-glow); transform: translateY(-5px); }
         .step-number { width: 2.4rem; height: 2.4rem; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin: 0 auto 1rem; font-size: 0.9rem; box-shadow: 0 0 15px var(--primary-glow-strong); }
 
+        /* ----- User Guidelines Modal (Popup + Accordion) ----- */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-content { background: var(--bg-card); width: 90%; max-width: 650px; max-height: 85vh; border-radius: 1rem; border: 1px solid var(--border-light); box-shadow: 0 10px 40px rgba(0,0,0,0.4); display: flex; flex-direction: column; transform: translateY(20px) scale(0.95); transition: all 0.3s ease; }
+        .modal-overlay.active .modal-content { transform: translateY(0) scale(1); }
+        .modal-header { padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; background: var(--bg-card); border-radius: 1rem 1rem 0 0; }
+        .modal-header h2 { font-size: 1.4rem; color: var(--secondary); display: flex; align-items: center; gap: 0.5rem; margin: 0; }
+        .modal-header h2 i { color: var(--primary); }
+        .close-modal { background: var(--hover-bg); border: 1px solid var(--border-light); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--text-muted); cursor: pointer; transition: 0.2s; }
+        .close-modal:hover { background: #ef4444; color: white; border-color: #ef4444; transform: rotate(90deg); }
+        .modal-body { padding: 1.5rem; overflow-y: auto; display: flex; flex-direction: column; gap: 0.8rem; }
+        
+        .accordion-item { border: 1px solid var(--border-light); border-radius: 0.6rem; overflow: hidden; background: var(--bg-color); transition: border-color 0.3s; }
+        .accordion-item:hover { border-color: var(--primary-light); }
+        .accordion-header { width: 100%; text-align: left; padding: 1.2rem 1.5rem; background: transparent; border: none; color: var(--text-main); font-weight: 600; font-size: 1.05rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; font-family: inherit; }
+        .accordion-header:hover { background: var(--primary-glow); }
+        .accordion-header i { transition: transform 0.3s; color: var(--primary); font-size: 0.9rem; }
+        .accordion-header.active i { transform: rotate(180deg); }
+        .accordion-header.active { background: var(--primary-glow); color: var(--primary); border-bottom: 1px solid var(--border-light); }
+        .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; background: var(--bg-card); }
+        .accordion-content { padding: 1.2rem 1.5rem; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; border-top: 1px solid transparent; }
+
         footer { background: var(--footer-bg); padding: 3.3rem 5% 2rem; text-align: center; transition: background 0.4s; border-top: 1px solid var(--border-light); }
         footer h3 { font-size: 1.3rem; }
         footer p { font-size: 0.9rem; }
@@ -314,6 +353,7 @@
             .hero { grid-template-columns: 1fr; text-align: center; padding-top: 7rem; }
             .hero p { margin: 0 auto 2rem; }
             .hero-actions { justify-content: center; flex-direction: column; }
+            .hero-links-group { align-items: center; }
             body { padding-bottom: 70px; }
             .typing-container { justify-content: center; }
             /* Adjust WA button for mobile sticky bar */
@@ -403,8 +443,20 @@
                 <p class="reveal" style="--delay: 0.3s;" data-i18n="heroDesc"><span class='abid-font'>AbidSuite</span> হলো মাইক্রোসফট ওয়ার্ডের একটি স্মার্ট এক্সটেনশন, যা আপনার বাংলা টাইপিং, ফরম্যাটিং এবং ডকুমেন্ট ক্লিনিংয়ের কাজকে করবে আরও সহজ ও প্রফেশনাল।</p>
                 <div class="hero-actions reveal" style="--delay: 0.4s;">
                     <a href="https://drive.google.com/uc?export=download&id=1ufrjQ1Ji3qEUDSbXX0W7xZguEFYedDpR" class="btn-primary" data-i18n="btnDownload"><i class="fas fa-file-arrow-down"></i> ডাউনলোড <span class='abid-font'>AbidSuite</span></a>
-                    <a href="#install" class="link-install" data-i18n="btnInstall"><i class="fas fa-circle-play"></i> installation process দেখুন</a>
+                    
+                    <div class="hero-links-group">
+                        <a href="#install" class="link-install" data-i18n="btnInstall"><i class="fas fa-circle-play"></i> installation process দেখুন</a>
+                        <!-- Links -->
+                        <a href="#tutorial" class="link-highlight" data-i18n="btnAction"><i class="fas fa-bolt"></i> See it in Action</a>
+                        <button id="openGuideBtn" class="link-highlight guide-link" data-i18n="btnGuide"><i class="fas fa-book"></i> User Guidelines</button>
+                    </div>
                 </div>
+
+                <!-- Office Compatibility Highlight -->
+                <div class="compatibility-badge reveal" style="--delay: 0.5s;" data-i18n="compBadge">
+                    <i class="fab fa-windows"></i> Office 2007, 2010, 2016, 2021 ও 2025 (x86/x64) সাপোর্টেড
+                </div>
+
             </div>
             <div class="hero-image-wrapper reveal" style="--delay: 0.4s;">
                 <img src="https://lh3.googleusercontent.com/d/1vs69zJXTkf_vNdx_U3ET9s3uIln0fgIl" alt="AbidSuite Interface" class="hero-img">
@@ -434,7 +486,6 @@
             </div>
         </section>
 
-        <!-- New Video Section Added Here -->
         <section class="video-section" id="tutorial">
             <div class="reveal" style="text-align: center; margin-bottom: 2.6rem; --delay: 0.1s;">
                 <h2 class="atma-font" style="font-size: 2.2rem; color: var(--secondary);" data-i18n="videoTitle">কীভাবে কাজ করে?</h2>
@@ -469,7 +520,7 @@
                 <ul class="f-list">
                     <li><i class="fas fa-check"></i> <span data-i18n="f2L1">কলাম ও রো এর ম্যাজিক সাম</span></li>
                     <li><i class="fas fa-check"></i> <span data-i18n="f2L2">টেবিল ট্রান্সপোজ সুবিধা</span></li>
-                    <li><i class="fas fa-check"></i> <span data-i18n="f2L3">প্রফেশনাল টেবিল ফরম্যাটিং</span></li>
+                    <li><i class="fas fa-check"></i> <span data-i18n="f2L3">ব্ল্যাঙ্ক সেল ফিল, নাম্বারিং প্লাস ও সিঙ্গেল-মাল্টি কলাম কনভার্সন</span></li>
                 </ul>
             </div>
 
@@ -497,7 +548,7 @@
                 <div class="f-icon-wrap"><i class="fas fa-layer-group"></i></div>
                 <h3 class="atma-font" style="font-size: 1.3rem; margin-bottom: 1rem;" data-i18n="f5Title">অ্যাডভান্সড অটোমেশন</h3>
                 <ul class="f-list">
-                    <li><i class="fas fa-check"></i> <span data-i18n="f5L1">কাস্টম রিবন ও কুইক এক্সেস প্যানেল</span></li>
+                    <li><i class="fas fa-check"></i> <span data-i18n="f5L1">পাওয়ার সিলেক্টর এবং ডিলিটার (জোড়, বিজোড়, ব্ল্যাঙ্ক পেজ)</span></li>
                     <li><i class="fas fa-check"></i> <span data-i18n="f5L2">মাল্টিপল ম্যাক্রো ইন্টিগ্রেশন</span></li>
                     <li><i class="fas fa-check"></i> <span data-i18n="f5L3">অটোমেটিক টেমপ্লেট ও এনভায়রনমেন্ট সেটআপ</span></li>
                 </ul>
@@ -510,7 +561,7 @@
                     <li><i class="fas fa-check"></i> <span data-i18n="f6L1">কুইক QR Code জেনারেটর</span></li>
                     <li><i class="fas fa-check"></i> <span data-i18n="f6L2">ডকুমেন্ট টু ইমেজ এক্সপোর্ট</span></li>
                     <li><i class="fas fa-check"></i> <span data-i18n="f6L3">মাল্টি-পেস্ট ক্লিপবোর্ড</span></li>
-                    <li><i class="fas fa-check"></i> <span data-i18n="f6L4">টেক্সট থেকে বক্স</span></li>
+                    <li><i class="fas fa-check"></i> <span data-i18n="f6L4">সিলেকশন র‍্যাপার (Selection Wrapper) ও টেক্সট টু বক্স</span></li>
                     <li><i class="fas fa-check"></i> <span data-i18n="f6L5">ফোন নম্বর ফরমেটার</span></li>
                 </ul>
             </div>
@@ -524,7 +575,7 @@
                     <li><i class="fas fa-check"></i> <span data-i18n="f7L3">এক ক্লিকে কাস্টম স্টাইল অ্যাপ্লাই</span></li>
                     <li><i class="fas fa-check"></i> <span data-i18n="f7L4">ধারাবাহিক রিপ্লেস সুবিধা</span></li>
                     <li><i class="fas fa-check"></i> <span data-i18n="f7L5">পেজ ব্রেক রিমুভার</span></li>
-                    <li><i class="fas fa-check"></i> <span data-i18n="f7L6">লাইন ব্রেক কনভার্টার</span></li>
+                    <li><i class="fas fa-check"></i> <span data-i18n="f7L6">প্যারাগ্রাফ, লাইন ব্রেক ও নন-ব্রেকিং স্পেস ব্যাচ কনভার্টার</span></li>
                 </ul>
             </div>
 
@@ -566,6 +617,68 @@
         </section>
     </main>
 
+    <!-- User Guidelines Modal -->
+    <div id="guidelinesModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="atma-font" data-i18n="guideModalTitle"><i class="fas fa-book-open"></i> ব্যবহার নির্দেশিকা</h2>
+                <button class="close-modal" id="closeModalBtn" title="Close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header"><span data-i18n="g1Title">বিজয় টু ইউনিকোড</span> <i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-body">
+                            <div class="accordion-content" data-i18n="g1Desc">আপনার ডকুমেন্টের বিজয় টেক্সট সিলেক্ট করুন এবং রিবন থেকে 'বিজয় টু ইউনিকোড' বাটনে ক্লিক করে সহজেই ইউনিকোডে পরিবর্তন করুন।</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header"><span data-i18n="g2Title">অটো ক্যালকুলেশন</span> <i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-body">
+                            <div class="accordion-content" data-i18n="g2Desc">সংখ্যার নিচে বা পাশের ফাঁকা সেলে কার্সর রেখে 'Auto Calculate' এ ক্লিক করলেই স্বয়ংক্রিয়ভাবে যোগফল পেয়ে যাবেন।</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header"><span data-i18n="g3Title">ডকুমেন্ট ক্লিনার</span> <i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-body">
+                            <div class="accordion-content" data-i18n="g3Desc">অতিরিক্ত স্পেস, ফাঁকা লাইন এবং সাধারণ ফরম্যাটিং সমস্যাগুলো এক ক্লিকে সমাধান করতে 'Clean Document' বাটনে ক্লিক করুন।</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header"><span data-i18n="g4Title">বাংলা তারিখ ও সংখ্যা</span> <i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-body">
+                            <div class="accordion-content" data-i18n="g4Desc">আজকের বাংলা তারিখ ইনসার্ট করতে অথবা যেকোনো সংখ্যাকে বাংলায় কথায় রূপান্তর করতে রিবনের নির্দিষ্ট বাটনগুলো ব্যবহার করুন।</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header"><span data-i18n="g5Title">ইমেজ এক্সট্র্যাকশন</span> <i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-body">
+                            <div class="accordion-content" data-i18n="g5Desc">ডকুমেন্টের সব ছবি একসাথে আলাদা ফোল্ডারে সেভ করতে 'Extract Images' অপশনটি ব্যবহার করুন।</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header"><span data-i18n="g6Title">পাওয়ার সিলেক্টর ও ডিলিটার</span> <i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-body">
+                            <div class="accordion-content" data-i18n="g6Desc">নির্দিষ্ট পেজ (যেমন- বিজোড়, জোড়, ব্ল্যাঙ্ক পেজ) অথবা ডকুমেন্টের সব ছবি, টেবিল বা ইকুয়েশন এক ক্লিকে সিলেক্ট বা ডিলিট করতে 'Selector' এবং 'Deleter' মেনু ব্যবহার করুন।</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header"><span data-i18n="g7Title">অ্যাডভান্সড টেবিল টুলস</span> <i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-body">
+                            <div class="accordion-content" data-i18n="g7Desc">টেবিলের ফাঁকা ঘর পূরণ করা, নাম্বারিং করা, অথবা একাধিক কলামকে এক ক্লিকে সিঙ্গেল কলামে রূপান্তর করতে 'Table Tools' এর চমৎকার ফিচারগুলো ট্রাই করুন।</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header"><span data-i18n="g8Title">ডুয়াল ডেট প্রো-ম্যাক্স</span> <i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-body">
+                            <div class="accordion-content" data-i18n="g8Desc">একই সাথে ইংরেজি ও বাংলা তারিখ ইনসার্ট করতে 'Date & Time' মেনু থেকে 'Dual Date ProMax' অপশনটি ক্লিক করুন।</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <a href="https://drive.google.com/uc?export=download&id=1ufrjQ1Ji3qEUDSbXX0W7xZguEFYedDpR" id="stickyDownload" class="btn-primary" data-i18n="stickyDown">
         <i class="fas fa-file-arrow-down"></i> <em>এ খ ন ই    ডা ই ন লো ড    ক রু ন</em>
     </a>
@@ -592,12 +705,15 @@
                 logoTitle: "<span class='abid-font'>AbidSuite</span>",
                 navDownload: "ডাউনলোড",
                 navTheme: "Theme", themeLight: "লাইট", themeDark: "ডার্ক", themeOcean: "ওশান", themeForest: "ফরেস্ট", themeSunset: "সানসেট", themeAmethyst: "অ্যামিথিস্ট",
+                compBadge: "<i class='fab fa-windows'></i> Office 2007, 2010, 2016, 2021 ও 2025 (x86/x64) সাপোর্টেড",
                 heroBadge: "<i class='fas fa-shield-heart'></i> বাংলা ভাষার প্রসারে একটি ক্ষুদ্র প্রয়াস",
                 heroTitle: "ওয়ার্ড ডকুমেন্টে <br>কাজের গতি হবে <span style='color: var(--primary);'>দ্বিগুণ</span>",
                 typePrefix: "আপনার কাজ হবে ",
                 heroDesc: "<span class='abid-font'>AbidSuite</span> হলো Microsoft Word-এর জন্য একটি স্মার্ট এক্সটেনশন, যা আপনার বাংলা টাইপিং, ফরম্যাটিং এবং ডকুমেন্ট ক্লিনিংয়ের কাজকে করবে আরও সহজ ও প্রফেশনাল।",
                 btnDownload: "<i class='fas fa-file-arrow-down'></i> ডাউনলোড <span class='abid-font'>AbidSuite</span>",
-                btnInstall: "<i class='fas fa-circle-play'></i> installation process দেখুন",
+                btnInstall: "<i class='fas fa-bolt'></i> installation process দেখুন",
+                btnAction: "<i class='fas fa-circle-play'></i> কীভাবে কাজ করে দেখুন",
+                btnGuide: "<i class='fas fa-book'></i> ব্যবহার নির্দেশিকা",
                 videoTitle: "কীভাবে কাজ করে?",
                 hc1Title: "বিজয় টু ইউনিকোড", hc1Desc: "সহজ ফন্ট রূপান্তর",
                 hc2Title: "অটো ক্যালকুলেশন", hc2Desc: "টেবিল রো/কলাম যোগফল",
@@ -606,17 +722,26 @@
                 hc5Title: "বাংলা সংখ্যা", hc5Desc: "সংখ্যা থেকে কথায়",
                 purposeQuote: "“আমাদের মাতৃভাষা বাংলাকে ডিজিটাল মাধ্যমে আরও প্রসারিত ও সমৃদ্ধ করার লক্ষ্যে <strong class='abid-font' style='color:var(--primary-light);'>AbidSuite</strong> তৈরি করা হয়েছে”",
                 f1Title: "ভাষা ও লোকালাইজেশন", f1L1: "বিজয় ও ইউনিকোড কনভার্সন", f1L2: "বাংলা-ইংরেজি সংখ্যা পরিবর্তন", f1L3: "অটো বাংলা তারিখ ও সংখ্যা", f1L4: "স্মার্ট দাঁড়ি ও ফুলস্টপ সুইচ",
-                f2Title: "টেবিল ও ম্যাথ টুলস", f2L1: "কলাম ও রো এর ম্যাজিক সাম", f2L2: "টেবিল ট্রান্সপোজ সুবিধা", f2L3: "প্রফেশনাল টেবিল ফরম্যাটিং",
+                f2Title: "টেবিল ও ম্যাথ টুলস", f2L1: "কলাম ও রো এর ম্যাজিক সাম", f2L2: "টেবিল ট্রান্সপোজ সুবিধা", f2L3: "ব্ল্যাঙ্ক সেল ফিল, নাম্বারিং প্লাস ও সিঙ্গেল-মাল্টি কলাম কনভার্সন",
                 f3Title: "মিডিয়া ও এক্সট্র্যাকশন", f3L1: "এক ক্লিকে সব ছবি ফোল্ডারে সেভ", f3L2: "ডকুমেন্টের সব টেবিল আলাদা এক্সট্র্যাক্ট", f3L3: "অটোমেটিক টাইমস্ট্যাম্প ও অর্গানাইজেশন",
                 f4Title: "ম্যাথ ও নিউমেরিক টুলস", f4L1: "ভগ্নাংশ ও সুপারস্ক্রিপ্ট (Advanced EQ)", f4L2: "রোমান ও ইংরেজি সংখ্যার অটো কনভার্সন", f4L3: "কমপ্লেক্স ইকুয়েশন রেন্ডারিং সাপোর্ট",
-                f5Title: "অ্যাডভান্সড অটোমেশন", f5L1: "কাস্টম রিবন ও কুইক এক্সেস প্যানেল", f5L2: "মাল্টিপল ম্যাক্রো ইন্টিগ্রেশন", f5L3: "অটোমেটিক টেমপ্লেট ও এনভায়রনমেন্ট সেটআপ",
-                f6Title: "পাওয়ার ইউটিলিটি", f6L1: "কুইক QR Code জেনারেটর", f6L2: "ডকুমেন্ট টু ইমেজ এক্সপোর্ট", f6L3: "মাল্টি-পেস্ট ক্লিপবোর্ড", f6L4: "টেক্সট থেকে বক্স", f6L5: "ফোন নম্বর ফরমেটার",
-                f7Title: "অ্যাডভান্সড ফাইন্ড ও রিপ্লেস", f7L1: "বাংলা-ইংরেজি মিক্সড টেক্সট ফিক্স", f7L2: "অপ্রয়োজনীয় স্পেস রিমুভাল", f7L3: "এক ক্লিকে কাস্টম স্টাইল অ্যাপ্লাই", f7L4: "ধারাবাহিক রিপ্লেস সুবিধা", f7L5: "পেজ ব্রেক রিমুভার", f7L6: "লাইন ব্রেক কনভার্টার",
+                f5Title: "অ্যাডভান্সড অটোমেশন", f5L1: "পাওয়ার সিলেক্টর এবং ডিলিটার (জোড়, বিজোড়, ব্ল্যাঙ্ক পেজ)", f5L2: "মাল্টিপল ম্যাক্রো ইন্টিগ্রেশন", f5L3: "অটোমেটিক টেমপ্লেট ও এনভায়রনমেন্ট সেটআপ",
+                f6Title: "পাওয়ার ইউটিলিটি", f6L1: "কুইক QR Code জেনারেটর", f6L2: "ডকুমেন্ট টু ইমেজ এক্সপোর্ট", f6L3: "মাল্টি-পেস্ট ক্লিপবোর্ড", f6L4: "সিলেকশন র‍্যাপার (Selection Wrapper) ও টেক্সট টু বক্স", f6L5: "ফোন নম্বর ফরমেটার",
+                f7Title: "অ্যাডভান্সড ফাইন্ড ও রিপ্লেস", f7L1: "বাংলা-ইংরেজি মিক্সড টেক্সট ফিক্স", f7L2: "অপ্রয়োজনীয় স্পেস রিমুভাল", f7L3: "এক ক্লিকে কাস্টম স্টাইল অ্যাপ্লাই", f7L4: "ধারাবাহিক রিপ্লেস সুবিধা", f7L5: "পেজ ব্রেক রিমুভার", f7L6: "প্যারাগ্রাফ, লাইন ব্রেক ও নন-ব্রেকিং স্পেস ব্যাচ কনভার্টার",
                 f8Title: "ফাইল এক্সপোর্ট ও সিকিউরিটি", f8L1: "সিলেক্টেড টেক্সট সরাসরি পিডিএফ", f8L2: "ওয়ান-ক্লিক পাসওয়ার্ড প্রোটেকশন", f8L3: "কাস্টম ওয়াটারমার্ক জেনারেটর",
                 installTitle: "ইন্সটলেশন প্রসেস",
                 step1Title: "আনজিপ করুন", step1Desc: "ডাউনলোড করা <strong>.zip</strong> ফাইলটি আনজিপ করে নিন।",
-                step2Title: "ইন্সটল করুন", step2Desc: "ফোল্ডার থেকে <strong>installer.bat</strong> ফাইলটি রান করুন।",
+                step2Title: "ইন্সটল করুন", step2Desc: "ফোল্ডার থেকে <strong>installer.exe</strong> ফাইলটি রান করুন।",
                 step3Title: "আপডেট করুন", step3Desc: "MS Word ওপেন করে <strong class='abid-font'>AbidSuite</strong> আপডেট করে নিন।",
+                guideModalTitle: "<i class='fas fa-book-open'></i> ব্যবহার নির্দেশিকা",
+                g1Title: "বিজয় টু ইউনিকোড", g1Desc: "আপনার ডকুমেন্টের বিজয় টেক্সট সিলেক্ট করুন এবং রিবন থেকে 'বিজয় টু ইউনিকোড' বাটনে ক্লিক করে সহজেই ইউনিকোডে পরিবর্তন করুন।",
+                g2Title: "অটো ক্যালকুলেশন", g2Desc: "সংখ্যার নিচে বা পাশের ফাঁকা সেলে কার্সর রেখে 'Auto Calculate' এ ক্লিক করলেই স্বয়ংক্রিয়ভাবে যোগফল পেয়ে যাবেন।",
+                g3Title: "ডকুমেন্ট ক্লিনার", g3Desc: "অতিরিক্ত স্পেস, ফাঁকা লাইন এবং সাধারণ ফরম্যাটিং সমস্যাগুলো এক ক্লিকে সমাধান করতে 'Clean Document' বাটনে ক্লিক করুন।",
+                g4Title: "বাংলা তারিখ ও সংখ্যা", g4Desc: "আজকের বাংলা তারিখ ইনসার্ট করতে অথবা যেকোনো সংখ্যাকে বাংলায় কথায় রূপান্তর করতে রিবনের নির্দিষ্ট বাটনগুলো ব্যবহার করুন।",
+                g5Title: "ইমেজ এক্সট্র্যাকশন", g5Desc: "ডকুমেন্টের সব ছবি একসাথে আলাদা ফোল্ডারে সেভ করতে 'Extract Images' অপশনটি ব্যবহার করুন।",
+                g6Title: "পাওয়ার সিলেক্টর ও ডিলিটার", g6Desc: "নির্দিষ্ট পেজ (যেমন- বিজোড়, জোড়, ব্ল্যাঙ্ক পেজ) অথবা ডকুমেন্টের সব ছবি, টেবিল বা ইকুয়েশন এক ক্লিকে সিলেক্ট বা ডিলিট করতে 'Selector' এবং 'Deleter' মেনু ব্যবহার করুন।",
+                g7Title: "অ্যাডভান্সড টেবিল টুলস", g7Desc: "টেবিলের ফাঁকা ঘর পূরণ করা, নাম্বারিং করা, অথবা একাধিক কলামকে এক ক্লিকে সিঙ্গেল কলামে রূপান্তর করতে 'Table Tools' এর চমৎকার ফিচারগুলো ট্রাই করুন।",
+                g8Title: "ডুয়াল ডেট প্রো-ম্যাক্স", g8Desc: "একই সাথে ইংরেজি ও বাংলা তারিখ ইনসার্ট করতে 'Date & Time' মেনু থেকে 'Dual Date ProMax' অপশনটি ক্লিক করুন।",
                 stickyDown: "  <i class='fas fa-file-arrow-down'></i> <em style='font-family: Atma, cursive;'>এ খ ন ই    ডা ই ন লো ড    ক রু ন</em>",
                 footerSlogan: "বাংলা ভাষার ডিজিটাল উৎকর্ষতায় আপনার সঙ্গী।", footerCopyright: "Copyright © ২০২৬ আবিদ আল জামী। সর্বস্বত্ব সংরক্ষিত।"
             },
@@ -624,12 +749,15 @@
                 logoTitle: "<span class='abid-font'>AbidSuite</span>",
                 navDownload: "Download",
                 navTheme: "Theme", themeLight: "Light", themeDark: "Dark", themeOcean: "Ocean", themeForest: "Forest", themeSunset: "Sunset", themeAmethyst: "Amethyst",
+                compBadge: "<i class='fab fa-windows'></i> Office 2007, 2010, 2016, 2021 & 2025 (x86/x64) Supported",
                 heroBadge: "<i class='fas fa-shield-heart'></i> A small effort to promote the Bengali language",
                 heroTitle: "Work speed in Word documents will <span style='color: var(--primary);'>double</span>",
                 typePrefix: "Your workflow will be ",
                 heroDesc: "<span class='abid-font'>AbidSuite</span> is a smart extension for Microsoft Word that makes your Bengali typing, formatting, and document cleaning easier and more professional.",
                 btnDownload: "<i class='fas fa-file-arrow-down'></i> Download <span class='abid-font'>AbidSuite</span>",
-                btnInstall: "<i class='fas fa-circle-play'></i> View installation process",
+                btnInstall: "<i class='fas fa-bolt'></i> View installation process",
+                btnAction: "<i class='fas fa-circle-play'></i> See it in Action",
+                btnGuide: "<i class='fas fa-book'></i> User Guidelines",
                 videoTitle: "See it in Action",
                 hc1Title: "Bijoy to Unicode", hc1Desc: "Easy font conversion",
                 hc2Title: "Auto Calculation", hc2Desc: "Table row/column sum",
@@ -638,17 +766,26 @@
                 hc5Title: "Bengali Numbers", hc5Desc: "Number to words",
                 purposeQuote: "“<strong class='abid-font' style='color:var(--primary-light);'>AbidSuite</strong> was created to further expand and enrich our mother tongue Bengali in the digital medium.”",
                 f1Title: "Language & Localization", f1L1: "Bijoy & Unicode conversion", f1L2: "Bengali-English number swap", f1L3: "Auto Bengali date & number", f1L4: "Smart Dari & Fullstop switch",
-                f2Title: "Table & Math Tools", f2L1: "Magic sum of columns & rows", f2L2: "Table transpose feature", f2L3: "Professional table formatting",
+                f2Title: "Table & Math Tools", f2L1: "Magic sum of columns & rows", f2L2: "Table transpose feature", f2L3: "Blank Cell Fill, Numbering Plus & Single-Multi Column Conversion",
                 f3Title: "Media & Extraction", f3L1: "One-click save all images to folder", f3L2: "Extract all tables separately", f3L3: "Automatic timestamp & organization",
                 f4Title: "Math & Numeric Tools", f4L1: "Fractions & Superscript (Advanced EQ)", f4L2: "Auto conversion of Roman & English numbers", f4L3: "Complex equation rendering support",
-                f5Title: "Advanced Automation", f5L1: "Custom ribbon & quick access panel", f5L2: "Multiple macro integration", f5L3: "Automatic template & environment setup",
-                f6Title: "Power Utility", f6L1: "Quick QR Code generator", f6L2: "Document to Image export", f6L3: "Multi-paste clipboard", f6L4: "Text to Box", f6L5: "Phone Number Formatter",
-                f7Title: "Advanced Find & Replace", f7L1: "Bengali-English mixed text fix", f7L2: "Unnecessary space removal", f7L3: "One-click custom style apply", f7L4: "Sequential replace feature", f7L5: "Page break remover", f7L6: "Line break converter",
+                f5Title: "Advanced Automation", f5L1: "Power Selector & Deleter (Odd, Even, Blank Pages)", f5L2: "Multiple macro integration", f5L3: "Automatic template & environment setup",
+                f6Title: "Power Utility", f6L1: "Quick QR Code generator", f6L2: "Document to Image export", f6L3: "Multi-paste clipboard", f6L4: "Selection Wrapper & Text to Box", f6L5: "Phone Number Formatter",
+                f7Title: "Advanced Find & Replace", f7L1: "Bengali-English mixed text fix", f7L2: "Unnecessary space removal", f7L3: "One-click custom style apply", f7L4: "Sequential replace feature", f7L5: "Page break remover", f7L6: "Batch Converter for Paragraphs, Line Breaks & NBS",
                 f8Title: "File Export & Security", f8L1: "Selected text direct to PDF", f8L2: "One-click password protection", f8L3: "Custom watermark generator",
                 installTitle: "Installation Process",
                 step1Title: "Unzip", step1Desc: "Unzip the downloaded <strong>.zip</strong> file.",
-                step2Title: "Install", step2Desc: "Run the <strong>installer.bat</strong> file from the folder.",
+                step2Title: "Install", step2Desc: "Run the <strong>installer.exe</strong> file from the folder.",
                 step3Title: "Update", step3Desc: "Open MS Word and update <strong class='abid-font'>AbidSuite</strong>.",
+                guideModalTitle: "<i class='fas fa-book-open'></i> User Guidelines",
+                g1Title: "Bijoy to Unicode", g1Desc: "Select the Bijoy text in your document and click the 'Bijoy to Unicode' button on the ribbon to convert it to Unicode effortlessly.",
+                g2Title: "Auto Calculation", g2Desc: "Place your cursor in the empty cell below or next to the numbers, and click 'Auto Calculate' to instantly get the sum.",
+                g3Title: "Document Cleaner", g3Desc: "Click the 'Clean Document' button to fix extra spaces, empty lines, and common formatting issues with a single click.",
+                g4Title: "Bengali Date & Numbers", g4Desc: "Use the dedicated ribbon buttons to insert today's Bengali date or translate any digits into Bengali words.",
+                g5Title: "Image Extraction", g5Desc: "Use the 'Extract Images' option to save all pictures from the document directly into a separate folder at once.",
+                g6Title: "Power Selector & Deleter", g6Desc: "Use the 'Selector' and 'Deleter' menus to instantly select or delete specific pages (odd, even, blank) or objects like all images, tables, and equations.",
+                g7Title: "Advanced Table Tools", g7Desc: "Try the amazing 'Table Tools' to fill blank cells, add numbering, or convert multi-column tables into a single column with one click.",
+                g8Title: "Dual Date ProMax", g8Desc: "Insert both English and Bengali dates simultaneously by clicking the 'Dual Date ProMax' option from the 'Date & Time' menu.",
                 stickyDown: "  <i class='fas fa-file-arrow-down'></i> <em>d o w n l o a d   n o w</em>",
                 footerSlogan: "Your companion in the digital excellence of the Bengali language.", footerCopyright: "Copyright © 2026 Abid Al Jami. All rights reserved."
             },
@@ -656,12 +793,15 @@
                 logoTitle: "<span class='abid-font'>AbidSuite</span>",
                 navDownload: "डाउनलोड",
                 navTheme: "Theme", themeLight: "लाइट", themeDark: "डार्क", themeOcean: "सागर", themeForest: "जंगल", themeSunset: "सूर्यास्त", themeAmethyst: "नीलम",
+                compBadge: "<i class='fab fa-windows'></i> Office 2007, 2010, 2016, 2021 और 2025 (x86/x64) समर्थित",
                 heroBadge: "<i class='fas fa-shield-heart'></i> बंगाली भाषा को बढ़ावा देने का एक छोटा सा प्रयास",
                 heroTitle: "वर्ड डॉक्यूमेंट में काम की गति <span style='color: var(--primary);'>दोगुनी</span> हो जाएगी",
                 typePrefix: "आपका काम होगा ",
                 heroDesc: "<span class='abid-font'>AbidSuite</span> Microsoft Word के लिए एक स्मार्ट एक्सटेंशन है, जो आपकी बंगाली टाइपिंग, फ़ॉर्मेटिंग और दस्तावेज़ सफ़ाई को आसान और अधिक पेशेवर बना देगा।",
                 btnDownload: "<i class='fas fa-file-arrow-down'></i> <span class='abid-font'>AbidSuite</span> डाउनलोड करें",
-                btnInstall: "<i class='fas fa-circle-play'></i> इंस्टॉलेशन प्रक्रिया देखें",
+                btnInstall: "<i class='fas fa-bolt'></i> इंस्टॉलेशन प्रक्रिया देखें",
+                btnAction: "<i class='fas fa-circle-play'></i> कार्रवाई में देखें",
+                btnGuide: "<i class='fas fa-book'></i> उपयोगकर्ता दिशानिर्देश",
                 videoTitle: "यह कैसे काम करता है?",
                 hc1Title: "विजय से यूनिकोड", hc1Desc: "आसान फ़ॉन्ट रूपांतरण",
                 hc2Title: "स्वतः गणना", hc2Desc: "टेबल पंक्ति/कॉलम योग",
@@ -670,17 +810,26 @@
                 hc5Title: "बंगाली संख्याएँ", hc5Desc: "संख्या से शब्द",
                 purposeQuote: "“<strong class='abid-font' style='color:var(--primary-light);'>AbidSuite</strong> को डिजिटल माध्यम में हमारी मातृभाषा बंगाली का और अधिक विस्तार और समृद्ध करने के लिए बनाया गया है।”",
                 f1Title: "भाषा और स्थानीयकरण", f1L1: "विजय और यूनिकोड रूपांतरण", f1L2: "बंगाली-अंग्रेजी संख्या स्वैप", f1L3: "स्वतः बंगाली तारीख और संख्या", f1L4: "स्मार्ट दाड़ी और फुलस्टॉप स्विच",
-                f2Title: "टेबल और गणित उपकरण", f2L1: "कॉलम और पंक्तियों का जादुई योग", f2L2: "टेबल ट्रांसपोज़ सुविधा", f2L3: "पेशेवर टेबल फ़ॉर्मेटिंग",
+                f2Title: "टेबल और गणित उपकरण", f2L1: "कॉलम और पंक्तियों का जादुई योग", f2L2: "टेबल ट्रांसपोज़ सुविधा", f2L3: "रिक्त सेल भरें, नंबरिंग प्लस और सिंगल-मल्टी कॉलम रूपांतरण",
                 f3Title: "मीडिया और निष्कर्षण", f3L1: "एक-क्लिक में सभी चित्र फ़ोल्डर में सहेजें", f3L2: "सभी टेबल अलग से निकालें", f3L3: "स्वचालित टाइमस्टैम्प और संगठन",
                 f4Title: "गणित और संख्यात्मक उपकरण", f4L1: "अंश और सुपरस्क्रिप्ट (Advanced EQ)", f4L2: "रोमन और अंग्रेजी संख्याओं का स्वतः रूपांतरण", f4L3: "जटिल समीकरण रेंडरिंग समर्थन",
-                f5Title: "उन्नत स्वचालन", f5L1: "कस्टम रिबन और त्वरित पहुँच पैनल", f5L2: "एकाधिक मैक्रो एकीकरण", f5L3: "स्वचालित टेम्पलेट और पर्यावरण सेटअप",
-                f6Title: "पावर यूटिलिटी", f6L1: "त्वरित QR कोड जनरेटर", f6L2: "दस्तावेज़ से छवि निर्यात", f6L3: "मल्टी-पेस्ट क्लिपबोर्ड", f6L4: "टेक्स्ट से बॉक्स", f6L5: "फ़ोन नंबर फ़ॉर्मेटर",
-                f7Title: "उन्नत खोज और बदलें", f7L1: "बंगाली-अंग्रेजी मिश्रित पाठ सुधार", f7L2: "अनावश्यक स्थान हटाना", f7L3: "एक-क्लिक कस्टम शैली लागू करें", f7L4: "अनुक्रमिक प्रतिस्थापन सुविधा", f7L5: "पेज ब्रेक रिमूवर", f7L6: "लाइन ब्रेक कनवर्टर",
+                f5Title: "उन्नत स्वचालन", f5L1: "पावर चयनकर्ता और डिलीटर (सम, विषम, रिक्त पृष्ठ)", f5L2: "एकाधिक मैक्रो एकीकरण", f5L3: "स्वचालित टेम्पलेट और पर्यावरण सेटअप",
+                f6Title: "पावर यूटिलिटी", f6L1: "त्वरित QR कोड जनरेटर", f6L2: "दस्तावेज़ से छवि निर्यात", f6L3: "मल्टी-पेस्ट क्लिपबोर्ड", f6L4: "चयन रैपर (Selection Wrapper) और टेक्स्ट टू बॉक्स", f6L5: "फ़ोन नंबर फ़ॉर्मेटर",
+                f7Title: "उन्नत खोज और बदलें", f7L1: "बंगाली-अंग्रेजी मिश्रित पाठ सुधार", f7L2: "अनावश्यक स्थान हटाना", f7L3: "एक-क्लिक कस्टम शैली लागू करें", f7L4: "अनुक्रमिक प्रतिस्थापन सुविधा", f7L5: "पेज ब्रेक रिमूवर", f7L6: "अनुच्छेद, लाइन ब्रेक और गैर-ब्रेकिंग स्पेस बैच कनवर्टर",
                 f8Title: "फ़ाइल निर्यात और सुरक्षा", f8L1: "चयनित पाठ सीधे PDF में", f8L2: "एक-क्लिक पासवर्ड सुरक्षा", f8L3: "कस्टम वॉटरमार्क जनरेटर",
                 installTitle: "स्थापना प्रक्रिया",
                 step1Title: "अनज़िप करें", step1Desc: "डाउनलोड की गई <strong>.zip</strong> फ़ाइल को अनज़िप करें।",
-                step2Title: "इंस्टॉल करें", step2Desc: "फ़ोल्डर से <strong>installer.bat</strong> फ़ाइल चलाएँ।",
+                step2Title: "इंस्टॉल करें", step2Desc: "फ़ोल्डर से <strong>installer.exe</strong> फ़ाइल चलाएँ।",
                 step3Title: "अपडेट करें", step3Desc: "MS Word खोलें और <strong class='abid-font'>AbidSuite</strong> को अपडेट करें।",
+                guideModalTitle: "<i class='fas fa-book-open'></i> उपयोगकर्ता दिशानिर्देश",
+                g1Title: "विजय से यूनिकोड", g1Desc: "अपने दस्तावेज़ में विजय पाठ का चयन करें और इसे आसानी से यूनिकोड में बदलने के लिए रिबन पर 'विजय से यूनिकोड' बटन पर क्लिक करें।",
+                g2Title: "स्वतः गणना", g2Desc: "संख्याओं के नीचे या बगल वाले खाली सेल में अपना कर्सर रखें, और तुरंत योग प्राप्त करने के लिए 'स्वतः गणना' पर क्लिक करें।",
+                g3Title: "दस्तावेज़ क्लीनर", g3Desc: "अतिरिक्त रिक्त स्थान, खाली पंक्तियों और सामान्य फ़ॉर्मेटिंग समस्याओं को एक क्लिक में ठीक करने के लिए 'दस्तावेज़ साफ़ करें' बटन पर क्लिक करें।",
+                g4Title: "बंगाली तारीख और संख्याएँ", g4Desc: "आज की बंगाली तारीख डालने या किसी भी अंक को बंगाली शब्दों में बदलने के लिए समर्पित रिबन बटन का उपयोग करें।",
+                g5Title: "छवि निष्कर्षण", g5Desc: "दस्तावेज़ से सभी चित्रों को एक ही बार में एक अलग फ़ोल्डर में सहेजने के लिए 'चित्र निकालें' विकल्प का उपयोग करें।",
+                g6Title: "पावर चयनकर्ता और डिलीटर", g6Desc: "विशिष्ट पृष्ठों (विषम, सम, रिक्त) या चित्रों, तालिकाओं और समीकरणों जैसी वस्तुओं को तुरंत चुनने या हटाने के लिए 'चयनकर्ता' और 'डिलीटर' मेनू का उपयोग करें।",
+                g7Title: "उन्नत टेबल उपकरण", g7Desc: "रिक्त सेल भरने, नंबरिंग जोड़ने, या मल्टी-कॉलम टेबल को एक क्लिक के साथ सिंगल कॉलम में बदलने के लिए अद्भुत 'टेबल टूल्स' का प्रयास करें।",
+                g8Title: "दोहरी तिथि प्रो-मैक्स", g8Desc: "तारीख और समय मेनू से 'डुअल डेट प्रोमैक्स' विकल्प पर क्लिक करके एक साथ अंग्रेजी और बंगाली दोनों तिथियां डालें।",
                 stickyDown: "  <i class='fas fa-file-arrow-down'></i> <em>अ भी    डा उ न लो ड    क रें</em>",
                 footerSlogan: "बंगाली भाषा की डिजिटल उत्कृष्टता में आपका साथी।", footerCopyright: "कॉपीराइट © 2026 आबिद अल जामी। सर्वाधिकार सुरक्षित।"
             },
@@ -688,12 +837,15 @@
                 logoTitle: "<span class='abid-font'>AbidSuite</span>",
                 navDownload: "تنزيل",
                 navTheme: "المظهر", themeLight: "فاتح", themeDark: "داكن", themeOcean: "محيط", themeForest: "غابة", themeSunset: "غروب", themeAmethyst: "جمشت",
+                compBadge: "<i class='fab fa-windows'></i> يدعم Office 2007 و 2010 و 2016 و 2021 و 2025 (x86/x64)",
                 heroBadge: "<i class='fas fa-shield-heart'></i> جهد صغير لتعزيز اللغة البنغالية",
                 heroTitle: "سرعة العمل في مستندات Word <span style='color: var(--primary);'>ستتضاعف</span>",
                 typePrefix: "سيكون عملك ",
                 heroDesc: "<span class='abid-font'>AbidSuite</span> هو امتداد ذكي لـ Microsoft Word، يجعل الكتابة والتنسيق وتنظيف المستندات أسهل وأكثر احترافية.",
                 btnDownload: "<i class='fas fa-file-arrow-down'></i> تنزيل <span class='abid-font'>AbidSuite</span>",
-                btnInstall: "<i class='fas fa-circle-play'></i> عرض عملية التثبيت",
+                btnInstall: "<i class='fas fa-bolt'></i> عرض عملية التثبيت",
+                btnAction: "<i class='fas fa-circle-play'></i> شاهدها في العمل",
+                btnGuide: "<i class='fas fa-book'></i> إرشادات المستخدم",
                 videoTitle: "كيف يعمل؟",
                 hc1Title: "بيجوي إلى يونيكود", hc1Desc: "تحويل الخطوط بسهولة",
                 hc2Title: "حساب تلقائي", hc2Desc: "مجموع صف/عمود الجدول",
@@ -702,17 +854,26 @@
                 hc5Title: "الأرقام البنغالية", hc5Desc: "من أرقام إلى كلمات",
                 purposeQuote: "“تم إنشاء <strong class='abid-font' style='color:var(--primary-light);'>AbidSuite</strong> لتوسيع وإثراء لغتنا الأم البنغالية في الوسائط الرقمية.”",
                 f1Title: "اللغة والتعريب", f1L1: "تحويل بيجوي ويونيكود", f1L2: "تبديل الأرقام بين البنغالية والإنجليزية", f1L3: "تاريخ ورقم بنغالي تلقائي", f1L4: "تبديل ذكي للفاصلة والنقطة",
-                f2Title: "الجدول وأدوات الرياضيات", f2L1: "المجموع السحري للأعمدة والصفوف", f2L2: "ميزة تبديل الجدول", f2L3: "تنسيق احترافي للجدول",
+                f2Title: "الجدول وأدوات الرياضيات", f2L1: "المجموع السحري للأعمدة والصفوف", f2L2: "ميزة تبديل الجدول", f2L3: "تعبئة الخلايا الفارغة وترقيم بلس وتحويل عمود فردي-متعدد",
                 f3Title: "الوسائط والاستخراج", f3L1: "حفظ جميع الصور في مجلد بنقرة واحدة", f3L2: "استخراج جميع الجداول بشكل منفصل", f3L3: "طابع زمني وتنظيم تلقائي",
                 f4Title: "الرياضيات والأدوات الرقمية", f4L1: "الكسور والأرقام العلوية (EQ المتقدم)", f4L2: "التحويل التلقائي للأرقام الرومانية والإنجليزية", f4L3: "دعم عرض المعادلات المعقدة",
-                f5Title: "أتمتة متقدمة", f5L1: "شريط مخصص ولوحة وصول سريع", f5L2: "تكامل ماكرو متعدد", f5L3: "إعداد القالب والبيئة تلقائيًا",
-                f6Title: "أدوات الطاقة", f6L1: "منشئ رمز الاستجابة السريعة (QR)", f6L2: "تصدير المستند إلى صورة", f6L3: "حافظة متعددة اللصق", f6L4: "نص إلى مربع", f6L5: "منسق رقم الهاتف",
-                f7Title: "بحث واستبدال متقدم", f7L1: "إصلاح النص المختلط البنغالي-الإنجليزي", f7L2: "إزالة المسافات غير الضرورية", f7L3: "تطبيق النمط المخصص بنقرة واحدة", f7L4: "ميزة الاستبدال المتسلسل", f7L5: "مزيل فواصل الصفحات", f7L6: "محول فواصل الأسطر",
+                f5Title: "أتمتة متقدمة", f5L1: "محدد وحاذف قوي (صفحات فردية، زوجية، فارغة)", f5L2: "تكامل ماكرو متعدد", f5L3: "إعداد القالب والبيئة تلقائيًا",
+                f6Title: "أدوات الطاقة", f6L1: "منشئ رمز الاستجابة السريعة (QR)", f6L2: "تصدير المستند إلى صورة", f6L3: "حافظة متعددة اللصق", f6L4: "غلاف التحديد (Selection Wrapper) والنص إلى مربع", f6L5: "منسق رقم الهاتف",
+                f7Title: "بحث واستبدال متقدم", f7L1: "إصلاح النص المختلط البنغالي-الإنجليزي", f7L2: "إزالة المسافات غير الضرورية", f7L3: "تطبيق النمط المخصص بنقرة واحدة", f7L4: "ميزة الاستبدال المتسلسل", f7L5: "مزيل فواصل الصفحات", f7L6: "محول دفعي للفقرات وفواصل الأسطر والمسافات غير المنقسمة (NBS)",
                 f8Title: "تصدير الملفات والأمان", f8L1: "النص المحدد مباشرة إلى PDF", f8L2: "حماية بكلمة مرور بنقرة واحدة", f8L3: "منشئ علامة مائية مخصصة",
                 installTitle: "عملية التثبيت",
                 step1Title: "فك الضغط", step1Desc: "قم بفك ضغط ملف <strong>.zip</strong> الذي تم تنزيله.",
-                step2Title: "تثبيت", step2Desc: "قم بتشغيل ملف <strong>installer.bat</strong> من المجلد.",
+                step2Title: "تثبيت", step2Desc: "قم بتشغيل ملف <strong>installer.exe</strong> من المجلد.",
                 step3Title: "تحديث", step3Desc: "افتح MS Word وقم بتحديث <strong class='abid-font'>AbidSuite</strong>.",
+                guideModalTitle: "<i class='fas fa-book-open'></i> إرشادات المستخدم",
+                g1Title: "بيجوي إلى يونيكود", g1Desc: "حدد نص بيجوي في المستند الخاص بك وانقر فوق الزر 'بيجوي إلى يونيكود' على الشريط لتحويله إلى يونيكود بسهولة.",
+                g2Title: "حساب تلقائي", g2Desc: "ضع المؤشر في الخلية الفارغة أسفل الأرقام أو بجوارها، وانقر فوق 'حساب تلقائي' للحصول على المجموع على الفور.",
+                g3Title: "منظف المستندات", g3Desc: "انقر فوق الزر 'تنظيف المستند' لإصلاح المسافات الزائدة والأسطر الفارغة ومشكلات التنسيق الشائعة بنقرة واحدة.",
+                g4Title: "التاريخ والأرقام البنغالية", g4Desc: "استخدم أزرار الشريط المخصصة لإدراج التاريخ البنغالي اليوم أو ترجمة أي أرقام إلى كلمات بنغالية.",
+                g5Title: "استخراج الصور", g5Desc: "استخدم خيار 'استخراج الصور' لحفظ جميع الصور من المستند مباشرة في مجلد منفصل في وقت واحد.",
+                g6Title: "محدد وحاذف قوي", g6Desc: "استخدم قائمتي 'المحدد' و'الحاذف' لتحديد أو حذف صفحات معينة (فردية، زوجية، فارغة) أو كائنات مثل الصور والجداول والمعادلات على الفور.",
+                g7Title: "أدوات جداول متقدمة", g7Desc: "جرب 'أدوات الجداول' المذهلة لملء الخلايا الفارغة أو إضافة ترقيم أو تحويل جداول متعددة الأعمدة إلى عمود واحد بنقرة واحدة.",
+                g8Title: "التاريخ المزدوج برو ماكس", g8Desc: "قم بإدراج كل من التواريخ الإنجليزية والبنغالية في وقت واحد بالنقر فوق خيار 'التاريخ المزدوج برو ماكس' من قائمة 'التاريخ والوقت'.",
                 stickyDown: "  <i class='fas fa-file-arrow-down'></i> <em>ق م   ب ا ل ت ن ز ي ل   ا ل آ ن</em>",
                 footerSlogan: "رفيقك في التميز الرقمي للغة البنغالية.", footerCopyright: "حقوق الطبع والنشر © 2026 Abid Al Jami. جميع الحقوق محفوظة."
             }
@@ -869,6 +1030,49 @@
 
         document.querySelectorAll('.reveal').forEach(el => { observer.observe(el); });
 
+        // --- User Guidelines Modal Logic ---
+        const guideBtn = document.getElementById('openGuideBtn');
+        const guideModal = document.getElementById('guidelinesModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        guideBtn.addEventListener('click', () => {
+            guideModal.classList.add('active');
+            // Reset accordions to default closed state
+            document.querySelectorAll('.accordion-header').forEach(h => {
+                h.classList.remove('active');
+                h.nextElementSibling.style.maxHeight = null;
+            });
+        });
+
+        closeModalBtn.addEventListener('click', () => guideModal.classList.remove('active'));
+
+        guideModal.addEventListener('click', (e) => {
+            if(e.target === guideModal) {
+                guideModal.classList.remove('active');
+            }
+        });
+
+        // --- Accordion Logic ---
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', function() {
+                const body = this.nextElementSibling;
+                const isActive = this.classList.contains('active');
+                
+                // Close all other accordions
+                document.querySelectorAll('.accordion-header').forEach(h => {
+                    h.classList.remove('active');
+                    h.nextElementSibling.style.maxHeight = null;
+                });
+
+                // Toggle current accordion
+                if (!isActive) {
+                    this.classList.add('active');
+                    body.style.maxHeight = body.scrollHeight + "px";
+                }
+            });
+        });
+
         // --- Sticky Download & Back to Top ---
         const stickyDownload = document.getElementById('stickyDownload');
         const backToTop = document.getElementById('backToTop');
@@ -886,4 +1090,4 @@
         backToTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
     </script>
 </body>
-</html>
+                                                                                                         </html>
